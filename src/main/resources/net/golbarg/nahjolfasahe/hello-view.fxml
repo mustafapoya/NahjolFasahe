@@ -12,7 +12,7 @@
     </padding>
 
     <Label fx:id="welcomeText" />
-    <Button onAction="#onHelloButtonClick" text="Hello!">
+    <Button onAction="#onHelloButtonClick" text="سلام">
         <graphic>
             <FontIcon iconLiteral="bi-alarm" iconSize="32" />
         </graphic>
