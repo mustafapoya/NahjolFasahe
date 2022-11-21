@@ -45,5 +45,34 @@ public class MainViewController implements Initializable {
     @FXML
     private StatusBar statusBar;
 
-    
+    ObservableList<Category> allCategories = FXCollections.observableArrayList();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        allCategories = DBController.getAllCategory();
+        listViewCategory.setItems(allCategories);
+        listViewCategory.setCellFactory(new Callback<ListView<Category>, ListCell<Category>>() {
+            @Override
+            public ListCell<Category> call(ListView<Category> param) {
+                final Label leadLbl = new Label();
+                final Tooltip tooltip = new Tooltip();
+                final ListCell<Category> cell = new ListCell<Category>() {
+                    @Override
+                    protected void updateItem(Category item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item != null) {
+                            leadLbl.setText(item.getTitle());
+                            setText(item.getTitle());
+                            tooltip.setText(item.getTitle());
+                            setTooltip(tooltip);
+                        } else {
+
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
+    }
 }
