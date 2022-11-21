@@ -7,45 +7,40 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import org.controlsfx.control.SearchableComboBox?>
 <?import org.controlsfx.control.StatusBar?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.golbarg.nahjolfasahe.MainViewController">
    <top>
-      <VBox prefHeight="60.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="vbTop" prefHeight="60.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
    </top>
    <bottom>
-      <VBox prefHeight="20.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbBottom" prefHeight="20.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <StatusBar />
+            <StatusBar fx:id="statusBar" />
          </children>
       </VBox>
    </bottom>
    <center>
-      <SplitPane dividerPositions="0.7" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <SplitPane fx:id="splitPane" dividerPositions="0.7" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
-            <BorderPane prefHeight="373.0" prefWidth="459.0">
+            <BorderPane fx:id="borderPaneContent" prefHeight="373.0" prefWidth="459.0">
                <center>
-                  <TextArea nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <TextArea fx:id="txtHadis" nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets top="2.0" />
                      </BorderPane.margin>
                   </TextArea>
                </center>
                <top>
-                  <TextField prefHeight="30.0" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="txtSearchHadis" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" promptText="جستجو" BorderPane.alignment="CENTER" />
                </top>
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
             </BorderPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0">
-               <top>
-                  <SearchableComboBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" BorderPane.alignment="CENTER" />
-               </top>
+            <BorderPane fx:id="borderPaneCategory" prefHeight="200.0" prefWidth="200.0">
                <center>
-                  <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <ListView fx:id="listViewCategory" nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets top="2.0" />
                      </BorderPane.margin>
@@ -54,6 +49,9 @@
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
+               <top>
+                  <TextField fx:id="txtSearchCategory" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" promptText="جستجو" BorderPane.alignment="CENTER" />
+               </top>
             </BorderPane>
          </items>
       </SplitPane>
