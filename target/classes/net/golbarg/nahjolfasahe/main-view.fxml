@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.SearchableComboBox?>
+<?import org.controlsfx.control.StatusBar?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" />
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <VBox prefHeight="60.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <VBox prefHeight="20.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <StatusBar />
+         </children>
+      </VBox>
+   </bottom>
+   <center>
+      <SplitPane dividerPositions="0.7" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <items>
+            <BorderPane prefHeight="373.0" prefWidth="459.0">
+               <center>
+                  <TextArea nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets top="2.0" />
+                     </BorderPane.margin>
+                  </TextArea>
+               </center>
+               <top>
+                  <TextField prefHeight="30.0" BorderPane.alignment="CENTER" />
+               </top>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <top>
+                  <SearchableComboBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" BorderPane.alignment="CENTER" />
+               </top>
+               <center>
+                  <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets top="2.0" />
+                     </BorderPane.margin>
+                  </ListView>
+               </center>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
+            </BorderPane>
+         </items>
+      </SplitPane>
+   </center>
+</BorderPane>
