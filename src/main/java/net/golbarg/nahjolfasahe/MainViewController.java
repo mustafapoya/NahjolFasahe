@@ -52,10 +52,12 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        statusBar.setText("Loading Categories");
         allCategories = DBController.getAllCategory();
         FilteredList<Category> filteredList= new FilteredList<>(allCategories, data -> true);
 
         listViewCategory.setItems(filteredList);
+        statusBar.setText("Ok.");
         listViewCategory.setCellFactory(new Callback<ListView<Category>, ListCell<Category>>() {
             @Override
             public ListCell<Category> call(ListView<Category> param) {
@@ -100,14 +102,27 @@ public class MainViewController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Category> observable, Category oldValue, Category newValue) {
                 txtHadis.setText("");
-                ObservableList<Hadis> hadisList = DBController.getHadisOf(newValue.getTitle());
-                for(Hadis hadis: hadisList) {
-                    txtHadis.appendText(hadis.getHadisText().trim() + "\n\n\n");
+                statusBar.setText("Loading Hadis");
+                statusBar.setProgress(0.0);
+
+                try {
+                    ObservableList<Hadis> hadisList = DBController.getHadisOf(newValue.getTitle());
+                    int count = 0;
+                    for(Hadis hadis: hadisList) {
+                        txtHadis.appendText(hadis.getHadisText().trim() + "\n\n\n");
+                        
+                        if (hadisList.size() > 0){
+                            statusBar.setProgress(count / hadisList.size());
+                        }
+                    }
+                    statusBar.setProgress(1.0);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
                 txtHadis.setScrollTop(Double.MAX_VALUE);
             }
         });
-        
+
     }
 }
