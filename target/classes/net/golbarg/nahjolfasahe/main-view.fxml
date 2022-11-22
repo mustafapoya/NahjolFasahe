@@ -25,7 +25,7 @@
          <items>
             <BorderPane fx:id="borderPaneContent" prefHeight="373.0" prefWidth="459.0">
                <center>
-                  <TextArea fx:id="txtHadis" nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <TextArea fx:id="txtHadis" nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" wrapText="true" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets top="2.0" />
                      </BorderPane.margin>
