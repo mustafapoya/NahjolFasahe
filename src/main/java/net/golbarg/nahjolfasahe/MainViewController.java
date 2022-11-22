@@ -1,5 +1,6 @@
 package net.golbarg.nahjolfasahe;
 
+import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -12,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import net.golbarg.nahjolfasahe.models.Category;
+import net.golbarg.nahjolfasahe.models.Hadis;
 import org.controlsfx.control.StatusBar;
 
 import java.net.URL;
@@ -97,8 +99,15 @@ public class MainViewController implements Initializable {
         listViewCategory.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Category>() {
             @Override
             public void changed(ObservableValue<? extends Category> observable, Category oldValue, Category newValue) {
-                
+                txtHadis.setText("");
+                ObservableList<Hadis> hadisList = DBController.getHadisOf(newValue.getTitle());
+                for(Hadis hadis: hadisList) {
+                    txtHadis.appendText(hadis.getHadisText().trim() + "\n\n\n");
+                }
+
+                txtHadis.setScrollTop(Double.MAX_VALUE);
             }
         });
+        
     }
 }
