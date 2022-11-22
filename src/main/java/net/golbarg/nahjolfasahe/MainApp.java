@@ -13,6 +13,7 @@ public class MainApp extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("main-view.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setTitle("نهج الفصاحه");
         stage.setScene(scene);
         stage.show();
