@@ -6,6 +6,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +19,7 @@ import javafx.util.Callback;
 import net.golbarg.nahjolfasahe.models.Category;
 import net.golbarg.nahjolfasahe.models.Hadis;
 import org.controlsfx.control.StatusBar;
+import org.controlsfx.control.action.Action;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,6 +45,8 @@ public class MainViewController implements Initializable {
     private BorderPane borderPaneContent;
     @FXML
     private TextField txtSearchHadis;
+    @FXML
+    private Button btnSearchHadis;
     @FXML
     private ScrollPane scrollPaneHadis;
     @FXML
@@ -123,5 +128,26 @@ public class MainViewController implements Initializable {
             }
         });
 
+        EventHandler<ActionEvent> searchHadisEvent = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    ObservableList<Hadis> hadisList = DBController.searchHadisOf(txtSearchHadis.getText());
+                    hadisContainer.getChildren().clear();
+                    for(Hadis hadis: hadisList) {
+                        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hadis-view.fxml"));
+                        VBox element = fxmlLoader.load();
+                        HadisViewController controller = fxmlLoader.getController();
+                        controller.initializeData(hadis);
+                        hadisContainer.getChildren().add(element);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        btnSearchHadis.setOnAction(searchHadisEvent);
+        txtSearchHadis.setOnAction(searchHadisEvent);
     }
 }
