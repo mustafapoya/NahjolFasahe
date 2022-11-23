@@ -7,10 +7,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import net.golbarg.nahjolfasahe.models.Category;
 import net.golbarg.nahjolfasahe.models.Hadis;
@@ -41,7 +43,9 @@ public class MainViewController implements Initializable {
     @FXML
     private TextField txtSearchHadis;
     @FXML
-    private TextArea txtHadis;
+    private ScrollPane scrollPaneHadis;
+    @FXML
+    private VBox hadisContainer;
 
     @FXML
     private VBox vbBottom;
@@ -101,26 +105,21 @@ public class MainViewController implements Initializable {
         listViewCategory.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Category>() {
             @Override
             public void changed(ObservableValue<? extends Category> observable, Category oldValue, Category newValue) {
-                txtHadis.setText("");
-                statusBar.setText("Loading Hadis");
-                statusBar.setProgress(0.0);
 
                 try {
                     ObservableList<Hadis> hadisList = DBController.getHadisOf(newValue.getTitle());
-                    int count = 0;
+                    hadisContainer.getChildren().clear();
                     for(Hadis hadis: hadisList) {
-                        txtHadis.appendText(hadis.getHadisText().trim() + "\n\n\n");
-                        
-                        if (hadisList.size() > 0){
-                            statusBar.setProgress(count / hadisList.size());
-                        }
+                        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hadis-view.fxml"));
+                        VBox element = fxmlLoader.load();
+                        HadisViewController controller = fxmlLoader.getController();
+                        controller.initializeData(hadis);
+                        hadisContainer.getChildren().add(element);
                     }
-                    statusBar.setProgress(1.0);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                txtHadis.setScrollTop(Double.MAX_VALUE);
             }
         });
 
