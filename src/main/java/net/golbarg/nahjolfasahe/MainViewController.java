@@ -21,6 +21,7 @@ import net.golbarg.nahjolfasahe.models.Hadis;
 import org.controlsfx.control.StatusBar;
 import org.controlsfx.control.action.Action;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -113,15 +114,7 @@ public class MainViewController implements Initializable {
 
                 try {
                     ObservableList<Hadis> hadisList = DBController.getHadisOf(newValue.getTitle());
-                    hadisContainer.getChildren().clear();
-                    for(Hadis hadis: hadisList) {
-                        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hadis-view.fxml"));
-                        VBox element = fxmlLoader.load();
-                        HadisViewController controller = fxmlLoader.getController();
-                        controller.initializeData(hadis);
-                        hadisContainer.getChildren().add(element);
-                    }
-
+                    displayHadis(hadisList);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -132,14 +125,13 @@ public class MainViewController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    ObservableList<Hadis> hadisList = DBController.searchHadisOf(txtSearchHadis.getText());
-                    hadisContainer.getChildren().clear();
-                    for(Hadis hadis: hadisList) {
-                        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hadis-view.fxml"));
-                        VBox element = fxmlLoader.load();
-                        HadisViewController controller = fxmlLoader.getController();
-                        controller.initializeData(hadis);
-                        hadisContainer.getChildren().add(element);
+                    String searchText = txtSearchHadis.getText();
+                    if(searchText.length() > 0) {
+                        ObservableList<Hadis> hadisList = DBController.searchHadisOf(searchText);
+                        displayHadis(hadisList);
+                    } else {
+                        statusBar.setText("برای جستجو متنی را بنویسید.");
+                        statusBar.setStyle("-fx-text-fill: red;");
                     }
 
                 } catch (Exception e) {
@@ -149,5 +141,16 @@ public class MainViewController implements Initializable {
         };
         btnSearchHadis.setOnAction(searchHadisEvent);
         txtSearchHadis.setOnAction(searchHadisEvent);
+    }
+
+    private void displayHadis(ObservableList<Hadis> hadisList) throws IOException {
+        hadisContainer.getChildren().clear();
+        for(Hadis hadis: hadisList) {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hadis-view.fxml"));
+            VBox element = fxmlLoader.load();
+            HadisViewController controller = fxmlLoader.getController();
+            controller.initializeData(hadis);
+            hadisContainer.getChildren().add(element);
+        }
     }
 }

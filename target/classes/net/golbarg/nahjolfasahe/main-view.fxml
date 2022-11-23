@@ -18,7 +18,7 @@
    <bottom>
       <VBox fx:id="vbBottom" prefHeight="20.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <StatusBar fx:id="statusBar" />
+            <StatusBar fx:id="statusBar" nodeOrientation="RIGHT_TO_LEFT" text="موفقانه اجراء شد" />
          </children>
       </VBox>
    </bottom>
