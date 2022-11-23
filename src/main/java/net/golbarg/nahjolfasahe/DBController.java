@@ -93,6 +93,36 @@ public class DBController {
         return hadisList;
     }
 
+    public static ObservableList<Hadis> searchHadisOf(String searchText) {
+        ObservableList<Hadis> hadisList = FXCollections.observableArrayList();
+        String query = "SELECT * FROM " + TABLE_HADIS + " WHERE hadis_text LIKE ?;";
+
+        try (Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, "%" + searchText + "%");
+            ResultSet result = statement.executeQuery();
+
+            while(result.next()) {
+                long id = result.getLong("id");
+                Category category1 = new Category(result.getString("category"));
+                Category subCategory = new Category(result.getString("sub_category"));
+                String hadisText = result.getString("hadis_text");
+
+                hadisList.add(new Hadis(id, category1, subCategory, hadisText));
+
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+
+            Logger.getAnonymousLogger().log(
+                    Level.SEVERE,
+                    LocalDateTime.now() + ": Could not load Hadises by search from database");
+        }
+
+        return hadisList;
+    }
+
+
     public static ObservableList<Category> getAllCategory() {
         ObservableList<Category> categoryList = FXCollections.observableArrayList();
         String query = "select distinct category from  " + TABLE_HADIS;
