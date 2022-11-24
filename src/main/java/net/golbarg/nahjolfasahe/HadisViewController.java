@@ -61,6 +61,8 @@ public class HadisViewController {
             }
         });
 
+        txtHadis.wrappingWidthProperty().setValue(MainApp.stage.getWidth() - 270);
+
         btnCopy.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -71,7 +73,7 @@ public class HadisViewController {
 
                 Notifications notification = Notifications.create();
                 notification.text("Copied to Clipboard");
-                notification.graphic(new FontIcon("bi-alarm"));
+                notification.graphic(new FontIcon("bi-file-text-fill"));
                 notification.title("Nahjol Fasahe");
                 notification.show();
             }
