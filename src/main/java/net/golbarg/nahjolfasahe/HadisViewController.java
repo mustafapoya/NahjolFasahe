@@ -17,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import net.golbarg.nahjolfasahe.models.Hadis;
 import org.controlsfx.control.Notifications;
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -51,8 +52,9 @@ public class HadisViewController {
 
         lblHadisCategory.setText(hadis.getCategory().getTitle());
         lblHadisSubCategory.setText(hadis.getSubCategory().getTitle());
-        lblHadisNumber.setText(String.valueOf(hadis.getId() + 1));
+        lblHadisNumber.setText(String.valueOf("حدیث شماره: " + hadis.getId() + 1));
         txtHadis.setText(hadis.getHadisText());
+
 
         MainApp.stage.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -78,5 +80,6 @@ public class HadisViewController {
                 notification.show();
             }
         });
+
     }
 }
