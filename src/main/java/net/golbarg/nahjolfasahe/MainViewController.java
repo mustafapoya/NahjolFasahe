@@ -113,8 +113,10 @@ public class MainViewController implements Initializable {
             public void changed(ObservableValue<? extends Category> observable, Category oldValue, Category newValue) {
 
                 try {
-                    ObservableList<Hadis> hadisList = DBController.getHadisOf(newValue.getTitle());
-                    displayHadis(hadisList);
+                    if(newValue != null) {
+                        ObservableList<Hadis> hadisList = DBController.getHadisOf(newValue.getTitle());
+                        displayHadis(hadisList);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
