@@ -6,11 +6,14 @@ public class Hadis {
     private Category subCategory;
     private String hadisText;
 
-    public Hadis(long id, Category category, Category subCategory, String hadisText) {
+    private boolean bookmark;
+
+    public Hadis(long id, Category category, Category subCategory, String hadisText, boolean bookmark) {
         this.id = id;
         this.category = category;
         this.subCategory = subCategory;
         this.hadisText = hadisText;
+        this.bookmark = bookmark;
     }
 
     public long getId() {
@@ -45,6 +48,14 @@ public class Hadis {
         this.hadisText = hadisText;
     }
 
+    public boolean isBookmark() {
+        return bookmark;
+    }
+
+    public void setBookmark(boolean bookmark) {
+        this.bookmark = bookmark;
+    }
+
     @Override
     public String toString() {
         return "Hadis{" +
@@ -52,6 +63,7 @@ public class Hadis {
                 ", category=" + category +
                 ", subCategory=" + subCategory +
                 ", hadisText='" + hadisText + '\'' +
+                ", bookmark=" + bookmark +
                 '}';
     }
 }
