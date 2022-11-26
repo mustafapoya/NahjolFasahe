@@ -52,8 +52,8 @@ public class DBController {
                 Category category = new Category(result.getString("category"));
                 Category subCategory = new Category(result.getString("sub_category"));
                 String hadisText = result.getString("hadis_text");
-
-                hadisList.add(new Hadis(id, category, subCategory, hadisText));
+                boolean bookmark = result.getBoolean("bookmark");
+                hadisList.add(new Hadis(id, category, subCategory, hadisText, bookmark));
 
 
             }
@@ -80,8 +80,9 @@ public class DBController {
                 Category category1 = new Category(result.getString("category"));
                 Category subCategory = new Category(result.getString("sub_category"));
                 String hadisText = result.getString("hadis_text");
+                boolean bookmark = result.getBoolean("bookmark");
 
-                hadisList.add(new Hadis(id, category1, subCategory, hadisText));
+                hadisList.add(new Hadis(id, category1, subCategory, hadisText, bookmark));
 
             }
         } catch(SQLException e) {
@@ -107,8 +108,9 @@ public class DBController {
                 Category category1 = new Category(result.getString("category"));
                 Category subCategory = new Category(result.getString("sub_category"));
                 String hadisText = result.getString("hadis_text");
+                boolean bookmark = result.getBoolean("bookmark");
 
-                hadisList.add(new Hadis(id, category1, subCategory, hadisText));
+                hadisList.add(new Hadis(id, category1, subCategory, hadisText, bookmark));
 
             }
         } catch(SQLException e) {
@@ -167,4 +169,19 @@ public class DBController {
         return subCategoryList;
     }
 
+    public static void toggle_bookmark(Hadis hadis, boolean bookmark) {
+        String query = "UPDATE " + TABLE_HADIS +" SET bookmark = ? where id = ?;";
+
+        try (Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setBoolean(1, bookmark);
+            statement.setLong(2, hadis.getId());
+
+            int result = statement.executeUpdate();
+        } catch(SQLException e) {
+            Logger.getAnonymousLogger().log(
+                    Level.SEVERE,
+                    LocalDateTime.now() + ": Could not load Hadis Category from database ");
+        }
+    }
 }

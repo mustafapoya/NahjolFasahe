@@ -16,6 +16,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import net.golbarg.nahjolfasahe.models.Hadis;
@@ -33,6 +34,9 @@ public class HadisViewController {
     private HBox headerLeft;
     @FXML
     private Button btnCopy;
+    @FXML
+    private Button btnBookmark;
+
     //
     @FXML
     private HBox headerRight;
@@ -52,9 +56,14 @@ public class HadisViewController {
 
         lblHadisCategory.setText(hadis.getCategory().getTitle());
         lblHadisSubCategory.setText(hadis.getSubCategory().getTitle());
-        lblHadisNumber.setText(String.valueOf("حدیث شماره: " + hadis.getId() + 1));
+        lblHadisNumber.setText(String.valueOf("حدیث شماره: " + hadis.getId()));
         txtHadis.setText(hadis.getHadisText());
 
+        if(hadis.isBookmark()) {
+            btnBookmark.setGraphic(getBookmarkFillIcon());
+        } else {
+            btnBookmark.setGraphic(getBookmarkIcon());
+        }
 
         MainApp.stage.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -81,5 +90,32 @@ public class HadisViewController {
             }
         });
 
+        btnBookmark.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FontIcon icon = (FontIcon) btnBookmark.getGraphic();
+                String current_icon = icon.getIconLiteral();
+                if(current_icon.equals("bi-journal-bookmark")) {
+                    btnBookmark.setGraphic(getBookmarkFillIcon());
+                    DBController.toggle_bookmark(hadis, true);
+                } else {
+                    btnBookmark.setGraphic(getBookmarkIcon());
+                    DBController.toggle_bookmark(hadis, false);
+                }
+            }
+        });
+
+    }
+
+    public static FontIcon getBookmarkFillIcon() {
+        FontIcon icon = new FontIcon("bi-journal-bookmark-fill");
+        icon.setIconSize(15);
+        return icon;
+    }
+
+    public static FontIcon getBookmarkIcon() {
+        FontIcon icon = new FontIcon("bi-journal-bookmark");
+        icon.setIconSize(15);
+        return icon;
     }
 }

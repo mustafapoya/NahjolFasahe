@@ -62,8 +62,13 @@
                   <Insets left="2.0" right="2.0" />
                </padding>
             </HBox>
-            <HBox fx:id="headerLeft" alignment="CENTER_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="35.0" prefWidth="50.0" HBox.hgrow="ALWAYS">
+            <HBox fx:id="headerLeft" alignment="CENTER_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="29.0" prefWidth="29.0" spacing="3.0" HBox.hgrow="ALWAYS">
                <children>
+                  <Button fx:id="btnBookmark" mnemonicParsing="false" prefHeight="29.0" prefWidth="29.0">
+                     <graphic>
+                        <FontIcon iconLiteral="bi-journal-bookmark" iconSize="15" />
+                     </graphic>
+                  </Button>
                   <Button fx:id="btnCopy" mnemonicParsing="false" prefHeight="29.0" prefWidth="29.0">
                      <graphic>
                         <FontIcon iconLiteral="bi-clipboard-check" iconSize="15" />
