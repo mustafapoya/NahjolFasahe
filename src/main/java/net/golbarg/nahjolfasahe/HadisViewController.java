@@ -56,9 +56,14 @@ public class HadisViewController {
 
         lblHadisCategory.setText(hadis.getCategory().getTitle());
         lblHadisSubCategory.setText(hadis.getSubCategory().getTitle());
-        lblHadisNumber.setText(String.valueOf("حدیث شماره: " + hadis.getId() + 1));
+        lblHadisNumber.setText(String.valueOf("حدیث شماره: " + hadis.getId()));
         txtHadis.setText(hadis.getHadisText());
 
+        if(hadis.isBookmark()) {
+            btnBookmark.setGraphic(getBookmarkFillIcon());
+        } else {
+            btnBookmark.setGraphic(getBookmarkIcon());
+        }
 
         MainApp.stage.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -92,8 +97,10 @@ public class HadisViewController {
                 String current_icon = icon.getIconLiteral();
                 if(current_icon.equals("bi-journal-bookmark")) {
                     btnBookmark.setGraphic(getBookmarkFillIcon());
+                    DBController.toggle_bookmark(hadis, true);
                 } else {
                     btnBookmark.setGraphic(getBookmarkIcon());
+                    DBController.toggle_bookmark(hadis, false);
                 }
             }
         });
