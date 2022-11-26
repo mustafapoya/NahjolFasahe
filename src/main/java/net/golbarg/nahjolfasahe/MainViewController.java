@@ -31,6 +31,10 @@ public class MainViewController implements Initializable {
     private BorderPane root;
     @FXML
     private VBox vbTop;
+    @FXML
+    private ToolBar toolBar;
+    @FXML
+    private Button btnBookmarks;
 
     @FXML
     private SplitPane splitPane;
@@ -143,6 +147,19 @@ public class MainViewController implements Initializable {
         };
         btnSearchHadis.setOnAction(searchHadisEvent);
         txtSearchHadis.setOnAction(searchHadisEvent);
+
+        btnBookmarks.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    ObservableList<Hadis> hadisList = DBController.getBookmarkedHadises();
+                    displayHadis(hadisList);
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void displayHadis(ObservableList<Hadis> hadisList) throws IOException {
