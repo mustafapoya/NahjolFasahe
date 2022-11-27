@@ -124,6 +124,33 @@ public class DBController {
         return hadisList;
     }
 
+    public static ObservableList<Hadis> getBookmarkedHadises() {
+        ObservableList<Hadis> hadisList = FXCollections.observableArrayList();
+        String query = "SELECT * FROM " + TABLE_HADIS + " WHERE bookmark = ?;";
+
+        try (Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, 1);
+            ResultSet result = statement.executeQuery();
+
+            while(result.next()) {
+                long id = result.getLong("id");
+                Category category1 = new Category(result.getString("category"));
+                Category subCategory = new Category(result.getString("sub_category"));
+                String hadisText = result.getString("hadis_text");
+                boolean bookmark = result.getBoolean("bookmark");
+
+                hadisList.add(new Hadis(id, category1, subCategory, hadisText, bookmark));
+
+            }
+        } catch(SQLException e) {
+            Logger.getAnonymousLogger().log(
+                    Level.SEVERE,
+                    LocalDateTime.now() + ": Could not load bookmarked Hadises from database");
+        }
+
+        return hadisList;
+    }
 
     public static ObservableList<Category> getAllCategory() {
         ObservableList<Category> categoryList = FXCollections.observableArrayList();
