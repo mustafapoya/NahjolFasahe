@@ -142,6 +142,7 @@ public class MainViewController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
+                    listViewCategory.getSelectionModel().clearSelection();
                     ObservableList<Hadis> hadisList = DBController.getBookmarkedHadises();
                     displayHadis(hadisList);
                     
