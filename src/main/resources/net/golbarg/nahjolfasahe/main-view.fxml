@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -51,7 +52,16 @@
             <Insets bottom="2.0" left="1.0" right="1.0" top="2.0" />
          </padding>
          <top>
-            <TextField fx:id="txtSearchCategory" nodeOrientation="RIGHT_TO_LEFT" prefHeight="35.0" promptText="جستجو دسته بندی" BorderPane.alignment="CENTER" />
+            <HBox spacing="2.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton fx:id="toggleCategory" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0">
+                     <graphic>
+                        <FontIcon iconLiteral="bi-sort-alpha-down" iconSize="20" />
+                     </graphic>
+                  </ToggleButton>
+                  <TextField fx:id="txtSearchCategory" nodeOrientation="RIGHT_TO_LEFT" prefHeight="35.0" promptText="جستجو دسته بندی" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
          </top>
       </BorderPane>
    </right>

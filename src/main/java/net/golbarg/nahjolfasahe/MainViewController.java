@@ -23,7 +23,10 @@ import org.controlsfx.control.action.Action;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Comparator;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class MainViewController implements Initializable {
 
@@ -44,6 +47,8 @@ public class MainViewController implements Initializable {
     @FXML
     private TextField txtSearchCategory;
     @FXML
+    private ToggleButton toggleCategory;
+    @FXML
     private ListView<Category> listViewCategory;
     // left panel
     @FXML
@@ -63,52 +68,37 @@ public class MainViewController implements Initializable {
     private StatusBar statusBar;
 
     ObservableList<Category> allCategories = FXCollections.observableArrayList();
+    FilteredList<Category> filteredList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         statusBar.setText("Loading Categories");
         allCategories = DBController.getAllCategory();
-        FilteredList<Category> filteredList= new FilteredList<>(allCategories, data -> true);
+        filteredList = new FilteredList<>(allCategories, data -> true);
 
         listViewCategory.setItems(filteredList);
         statusBar.setText("Ok.");
-        listViewCategory.setCellFactory(new Callback<ListView<Category>, ListCell<Category>>() {
-            @Override
-            public ListCell<Category> call(ListView<Category> param) {
-                final Label leadLbl = new Label();
-                final ListCell<Category> cell = new ListCell<Category>() {
-                    @Override
-                    protected void updateItem(Category item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        if (item != null) {
-                            leadLbl.setText(item.getTitle());
-                            setText(item.getTitle());
-                        } else {
-                            leadLbl.setText("");
-                            setText("");
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
+        listViewCategory.setCellFactory(createCategoryListViewCellFactory());
 
         txtSearchCategory.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                filteredList.setPredicate(data -> {
-                    if(newValue == null || newValue.isEmpty()) {
-                        return true;
-                    }
-                    String search = newValue.toLowerCase();
+                filterCategoryList(newValue, filteredList);
+            }
+        });
 
-                    if(data.getTitle().trim().contains(search)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                });
+        toggleCategory.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if(toggleCategory.isSelected()) {
+                    ObservableList<Category> list = filteredList.stream().sorted(Comparator.comparing(Category::getTitle)).collect(Collectors.toCollection(FXCollections::observableArrayList));
+                    statusBar.setText("sorted category list");
+                    listViewCategory.setItems(list);
+                } else {
+                    statusBar.setText("default category list");
+                    listViewCategory.setItems(filteredList);
+
+                }
             }
         });
 
@@ -158,6 +148,45 @@ public class MainViewController implements Initializable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+    }
+
+    private static Callback<ListView<Category>, ListCell<Category>> createCategoryListViewCellFactory() {
+        return new Callback<ListView<Category>, ListCell<Category>>() {
+            @Override
+            public ListCell<Category> call(ListView<Category> param) {
+                final Label leadLbl = new Label();
+                final ListCell<Category> cell = new ListCell<Category>() {
+                    @Override
+                    protected void updateItem(Category item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item != null) {
+                            leadLbl.setText(item.getTitle());
+                            setText(item.getTitle());
+                        } else {
+                            leadLbl.setText("");
+                            setText("");
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+    }
+
+    private static void filterCategoryList(String newValue, FilteredList<Category> filteredList) {
+        filteredList.setPredicate(data -> {
+            if(newValue == null || newValue.isEmpty()) {
+                return true;
+            }
+            String search = newValue.toLowerCase();
+
+            if(data.getTitle().trim().contains(search)) {
+                return true;
+            } else {
+                return false;
             }
         });
     }
