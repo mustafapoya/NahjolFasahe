@@ -91,7 +91,8 @@ public class MainViewController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(toggleCategory.isSelected()) {
-                    ObservableList<Category> list = filteredList.stream().sorted(Comparator.comparing(Category::getTitle)).collect(Collectors.toCollection(FXCollections::observableArrayList));
+                    ObservableList<Category> list = filteredList.stream().sorted(Comparator.comparing(Category::getTitle))
+                                                                .collect(Collectors.toCollection(FXCollections::observableArrayList));
                     statusBar.setText("sorted category list");
                     listViewCategory.setItems(list);
                 } else {
