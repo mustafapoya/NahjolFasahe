@@ -28,6 +28,14 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
+                  <Button fx:id="btnDailyHadis" mnemonicParsing="false" prefHeight="40.0" text="حدیث روز">
+                     <graphic>
+                        <FontIcon iconColor="#ff7e00" iconLiteral="bi-brightness-alt-high-fill" iconSize="25" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
               </items>
             </ToolBar>
          </children></VBox>

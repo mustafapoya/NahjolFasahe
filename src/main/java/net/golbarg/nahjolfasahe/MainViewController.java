@@ -1,5 +1,6 @@
 package net.golbarg.nahjolfasahe;
 
+import javafx.application.Preloader;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,10 +12,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import net.golbarg.nahjolfasahe.models.Category;
 import net.golbarg.nahjolfasahe.models.Hadis;
@@ -38,6 +41,8 @@ public class MainViewController implements Initializable {
     private ToolBar toolBar;
     @FXML
     private Button btnBookmarks;
+    @FXML
+    private Button btnDailyHadis;
 
     @FXML
     private SplitPane splitPane;
@@ -152,7 +157,33 @@ public class MainViewController implements Initializable {
                 }
             }
         });
+
+        btnDailyHadis.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("daily-hadis-view.fxml"));
+                    BorderPane element = fxmlLoader.load();
+                    Scene dailyhadisScene = new Scene(element);
+                    dailyhadisScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+                    Stage dailyHadisStage = new Stage();
+                    dailyHadisStage.setTitle("نهج الفصاحه");
+                    dailyHadisStage.setScene(dailyhadisScene);
+                    dailyHadisStage.initOwner(MainApp.stage);
+                    dailyHadisStage.setAlwaysOnTop(true);
+                    dailyHadisStage.requestFocus();
+                    dailyHadisStage.setResizable(false);
+                    dailyHadisStage.initStyle(StageStyle.DECORATED);
+                    dailyHadisStage.showAndWait();
+
+                } catch(Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
+
 
     private static Callback<ListView<Category>, ListCell<Category>> createCategoryListViewCellFactory() {
         return new Callback<ListView<Category>, ListCell<Category>>() {
