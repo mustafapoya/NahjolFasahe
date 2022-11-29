@@ -164,12 +164,12 @@ public class MainViewController implements Initializable {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("daily-hadis-view.fxml"));
                     BorderPane element = fxmlLoader.load();
-                    Scene dailyhadisScene = new Scene(element);
-                    dailyhadisScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+                    Scene dailyHadisScene = new Scene(element);
+                    dailyHadisScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
                     Stage dailyHadisStage = new Stage();
                     dailyHadisStage.setTitle("نهج الفصاحه");
-                    dailyHadisStage.setScene(dailyhadisScene);
+                    dailyHadisStage.setScene(dailyHadisScene);
                     dailyHadisStage.initOwner(MainApp.stage);
                     dailyHadisStage.setAlwaysOnTop(true);
                     dailyHadisStage.requestFocus();
