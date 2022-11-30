@@ -21,6 +21,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import net.golbarg.nahjolfasahe.models.Category;
 import net.golbarg.nahjolfasahe.models.Hadis;
+import net.golbarg.nahjolfasahe.trans.Persian;
 import org.controlsfx.control.StatusBar;
 import org.controlsfx.control.action.Action;
 
@@ -77,12 +78,12 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        statusBar.setText("Loading Categories");
+        statusBar.setText(Persian.LOADING_CATEGORY);
         allCategories = DBController.getAllCategory();
         filteredList = new FilteredList<>(allCategories, data -> true);
 
         listViewCategory.setItems(filteredList);
-        statusBar.setText("Ok.");
+        statusBar.setText(Persian.OK);
         listViewCategory.setCellFactory(createCategoryListViewCellFactory());
 
         txtSearchCategory.textProperty().addListener(new ChangeListener<String>() {
@@ -98,10 +99,10 @@ public class MainViewController implements Initializable {
                 if(toggleCategory.isSelected()) {
                     ObservableList<Category> list = filteredList.stream().sorted(Comparator.comparing(Category::getTitle))
                                                                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
-                    statusBar.setText("sorted category list");
+                    statusBar.setText(Persian.SORTED_CATEGORY);
                     listViewCategory.setItems(list);
                 } else {
-                    statusBar.setText("default category list");
+                    statusBar.setText(Persian.SORTED_DEFAULT_CATEGORY);
                     listViewCategory.setItems(filteredList);
 
                 }
@@ -132,7 +133,7 @@ public class MainViewController implements Initializable {
                         ObservableList<Hadis> hadisList = DBController.searchHadisOf(searchText);
                         displayHadis(hadisList);
                     } else {
-                        statusBar.setText("برای جستجو متنی را بنویسید.");
+                        statusBar.setText(Persian.FIRST_TYPE_TO_SEARCH);
                         statusBar.setStyle("-fx-text-fill: red;");
                     }
 
@@ -168,7 +169,7 @@ public class MainViewController implements Initializable {
                     dailyHadisScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
                     Stage dailyHadisStage = new Stage();
-                    dailyHadisStage.setTitle("نهج الفصاحه");
+                    dailyHadisStage.setTitle(Persian.APP_NAME);
                     dailyHadisStage.setScene(dailyHadisScene);
                     dailyHadisStage.initOwner(MainApp.stage);
                     dailyHadisStage.setAlwaysOnTop(true);

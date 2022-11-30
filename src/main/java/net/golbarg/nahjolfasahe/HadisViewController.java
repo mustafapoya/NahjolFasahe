@@ -20,6 +20,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import net.golbarg.nahjolfasahe.models.Hadis;
+import net.golbarg.nahjolfasahe.trans.Persian;
 import org.controlsfx.control.Notifications;
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -56,7 +57,7 @@ public class HadisViewController {
 
         lblHadisCategory.setText(hadis.getCategory().getTitle());
         lblHadisSubCategory.setText(hadis.getSubCategory().getTitle());
-        lblHadisNumber.setText(String.valueOf("حدیث شماره: " + hadis.getId()));
+        lblHadisNumber.setText(Persian.HADIS_NUMBER + hadis.getId());
         txtHadis.setText(hadis.getHadisText().trim());
 
         if(hadis.isBookmark()) {
@@ -83,9 +84,9 @@ public class HadisViewController {
                 clipboard.setContent(content);
 
                 Notifications notification = Notifications.create();
-                notification.text("Copied to Clipboard");
+                notification.text(Persian.COPIED_TO_CLIPBOARD);
                 notification.graphic(new FontIcon("bi-file-text-fill"));
-                notification.title("Nahjol Fasahe");
+                notification.title(Persian.APP_NAME);
                 notification.show();
             }
         });

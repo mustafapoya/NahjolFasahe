@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import net.golbarg.nahjolfasahe.models.Category;
 import net.golbarg.nahjolfasahe.models.Hadis;
+import net.golbarg.nahjolfasahe.trans.Persian;
 import org.controlsfx.control.Notifications;
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -91,9 +92,9 @@ public class DailyHadisViewController implements Initializable {
             systemClipboard.setContent(content);
 
             Notifications notification = Notifications.create();
-            notification.text("Copied to Clipboard");
+            notification.text(Persian.COPIED_TO_CLIPBOARD);
             notification.graphic(new FontIcon("bi-file-text-fill"));
-            notification.title("Nahjol Fasahe");
+            notification.title(Persian.APP_NAME);
             notification.show();
         });
 
