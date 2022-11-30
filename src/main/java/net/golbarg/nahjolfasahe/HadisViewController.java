@@ -57,7 +57,7 @@ public class HadisViewController {
         lblHadisCategory.setText(hadis.getCategory().getTitle());
         lblHadisSubCategory.setText(hadis.getSubCategory().getTitle());
         lblHadisNumber.setText(String.valueOf("حدیث شماره: " + hadis.getId()));
-        txtHadis.setText(hadis.getHadisText());
+        txtHadis.setText(hadis.getHadisText().trim());
 
         if(hadis.isBookmark()) {
             btnBookmark.setGraphic(getBookmarkFillIcon());
@@ -79,7 +79,7 @@ public class HadisViewController {
             public void handle(ActionEvent event) {
                 Clipboard clipboard = Clipboard.getSystemClipboard();
                 ClipboardContent content = new ClipboardContent();
-                content.putString(txtHadis.getText());
+                content.putString(txtHadis.getText().trim());
                 clipboard.setContent(content);
 
                 Notifications notification = Notifications.create();
