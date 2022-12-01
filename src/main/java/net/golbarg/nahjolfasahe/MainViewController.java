@@ -115,8 +115,10 @@ public class MainViewController implements Initializable {
 
                 try {
                     if(newValue != null) {
+                        statusBar.setText(Persian.LOADING + ": " + newValue.getTitle());
                         ObservableList<Hadis> hadisList = DBController.getHadisOf(newValue.getTitle());
                         displayHadis(hadisList);
+                        statusBar.setText(Persian.DISPLAY_HADIS_OF + ": " + newValue.getTitle());
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -149,10 +151,11 @@ public class MainViewController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
+                    statusBar.setText(Persian.LOADING_BOOKMARKED_HADISES);
                     listViewCategory.getSelectionModel().clearSelection();
                     ObservableList<Hadis> hadisList = DBController.getBookmarkedHadises();
                     displayHadis(hadisList);
-                    
+                    statusBar.setText(Persian.LOADING_DONE);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -163,6 +166,7 @@ public class MainViewController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
+                    statusBar.setText(Persian.LOADING);
                     FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("daily-hadis-view.fxml"));
                     BorderPane element = fxmlLoader.load();
                     Scene dailyHadisScene = new Scene(element);
@@ -177,7 +181,7 @@ public class MainViewController implements Initializable {
                     dailyHadisStage.setResizable(false);
                     dailyHadisStage.initStyle(StageStyle.DECORATED);
                     dailyHadisStage.showAndWait();
-
+                    statusBar.setText(Persian.DISPLAYED_DAILY_HADIS);
                 } catch(Exception ex) {
                     ex.printStackTrace();
                 }

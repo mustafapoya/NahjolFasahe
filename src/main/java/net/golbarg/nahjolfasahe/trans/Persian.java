@@ -14,4 +14,8 @@ public class Persian {
     public static final String HADIS_NUMBER = "حدیث شماره: ";
     public static final String COPIED_TO_CLIPBOARD = "کاپی کردن به کلیپ بورد";
 
+    public static final String LOADING_BOOKMARKED_HADISES = "بارگذاری احادیث نشانی شده";
+    public static final String LOADING_DONE = "بارگذاری انجام شد";
+    public static final String DISPLAYED_DAILY_HADIS = "نمایش حدیث روز";
+    public static final String DISPLAY_HADIS_OF = "نمایش احادیث";
 }
