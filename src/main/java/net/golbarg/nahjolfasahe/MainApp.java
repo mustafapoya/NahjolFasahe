@@ -6,6 +6,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.golbarg.nahjolfasahe.trans.Persian;
 
 import java.io.IOException;
 
@@ -20,7 +21,7 @@ public class MainApp extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setMinWidth(740);
-        stage.setTitle("نهج الفصاحه");
+        stage.setTitle(Persian.APP_NAME);
         stage.setScene(scene);
         stage.show();
 
