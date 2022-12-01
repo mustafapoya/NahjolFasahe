@@ -211,4 +211,37 @@ public class DBController {
                     LocalDateTime.now() + ": Could not load Hadis Category from database ");
         }
     }
+
+    public static void updateHadisText(Hadis hadis) {
+        String query = "UPDATE " + TABLE_HADIS +" SET hadis_text = ? where id = ?;";
+
+        try (Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, hadis.getHadisText());
+            statement.setLong(2, hadis.getId());
+
+            int result = statement.executeUpdate();
+        } catch(SQLException e) {
+            Logger.getAnonymousLogger().log(
+                    Level.SEVERE,
+                    LocalDateTime.now() + ": Could not Update Hadis ("+ hadis.getId() +") in database ");
+        }
+    }
+
+    public static void updateCategory(Hadis hadis) {
+        String query = "UPDATE " + TABLE_HADIS +" SET category = ?, sub_category = ? where id = ?;";
+
+        try (Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, hadis.getCategory().getTitle());
+            statement.setString(2, hadis.getSubCategory().getTitle());
+            statement.setLong(3, hadis.getId());
+
+            int result = statement.executeUpdate();
+        } catch(SQLException e) {
+            Logger.getAnonymousLogger().log(
+                    Level.SEVERE,
+                    LocalDateTime.now() + ": Could not Update Hadis ("+ hadis.getId() +") in database ");
+        }
+    }
 }
