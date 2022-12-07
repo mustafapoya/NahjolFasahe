@@ -1,5 +1,6 @@
 package net.golbarg.nahjolfasahe;
 
+import javafx.application.Platform;
 import javafx.application.Preloader;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
@@ -231,12 +232,18 @@ public class MainViewController implements Initializable {
 
     private void displayHadis(ObservableList<Hadis> hadisList) throws IOException {
         hadisContainer.getChildren().clear();
-        for(Hadis hadis: hadisList) {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hadis-view.fxml"));
-            VBox element = fxmlLoader.load();
-            HadisViewController controller = fxmlLoader.getController();
-            controller.initializeData(hadis);
-            hadisContainer.getChildren().add(element);
-        }
+        new Thread(() -> {
+            try {
+                for(Hadis hadis: hadisList) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hadis-view.fxml"));
+                    VBox element = fxmlLoader.load();
+                    HadisViewController controller = fxmlLoader.getController();
+                    controller.initializeData(hadis);
+                    Platform.runLater(() -> hadisContainer.getChildren().add(element));
+                }
+            } catch(Exception ex) {
+                ex.printStackTrace();
+            }
+        }, "Thread Display Hadis").start();
     }
 }
