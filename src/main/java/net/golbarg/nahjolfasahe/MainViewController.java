@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -174,6 +175,7 @@ public class MainViewController implements Initializable {
                     dailyHadisScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
                     Stage dailyHadisStage = new Stage();
+                    dailyHadisStage.getIcons().add(new Image(getClass().getResourceAsStream("app_icon.png")));
                     dailyHadisStage.setTitle(Persian.APP_NAME);
                     dailyHadisStage.setScene(dailyHadisScene);
                     dailyHadisStage.initOwner(MainApp.stage);
