@@ -2,6 +2,7 @@ module net.golbarg.nahjolfasahe {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires javafx.swing;
 
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
