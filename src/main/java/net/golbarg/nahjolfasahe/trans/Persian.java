@@ -18,4 +18,7 @@ public class Persian {
     public static final String LOADING_DONE = "بارگذاری انجام شد";
     public static final String DISPLAYED_DAILY_HADIS = "نمایش حدیث روز";
     public static final String DISPLAY_HADIS_OF = "نمایش احادیث";
+    public static final String HADIS_IMAGE_SAVED = "عکس حدیث ذخیره شد";
+    public static final String HADIS_IMAGE_NOT_SAVED = "عکس حدیث ذخیره نشد";
+
 }

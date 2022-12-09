@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="240.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.golbarg.nahjolfasahe.DailyHadisViewController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="240.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.golbarg.nahjolfasahe.HadisDailyViewController">
    <top>
       <VBox fx:id="vbHeader" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #6bc7f9;" BorderPane.alignment="CENTER">
          <children>
@@ -44,6 +44,11 @@
                         <Button fx:id="btnBookmark" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="نشانی">
                            <graphic>
                               <FontIcon iconLiteral="bi-journal-bookmark" iconSize="15" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnSaveImage" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="ذخیره">
+                           <graphic>
+                              <FontIcon iconLiteral="bi-image" iconSize="15" />
                            </graphic>
                         </Button>
                      </children>

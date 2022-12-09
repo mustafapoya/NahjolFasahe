@@ -1,13 +1,8 @@
-package net.golbarg.nahjolfasahe;
+package net.golbarg.nahjolfasahe.test;
 
 import javafx.collections.ObservableList;
+import net.golbarg.nahjolfasahe.DBController;
 import net.golbarg.nahjolfasahe.models.Category;
-import net.golbarg.nahjolfasahe.models.Hadis;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 public class TestDb {
     public static void main(String[] args) {

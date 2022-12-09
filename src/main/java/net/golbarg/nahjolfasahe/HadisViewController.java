@@ -1,27 +1,19 @@
 package net.golbarg.nahjolfasahe;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
+import net.golbarg.nahjolfasahe.controller.UtilController;
 import net.golbarg.nahjolfasahe.models.Hadis;
 import net.golbarg.nahjolfasahe.trans.Persian;
-import org.controlsfx.control.Notifications;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 public class HadisViewController {
@@ -37,7 +29,8 @@ public class HadisViewController {
     private Button btnCopy;
     @FXML
     private Button btnBookmark;
-
+    @FXML
+    private Button btnSaveImage;
     //
     @FXML
     private HBox headerRight;
@@ -61,9 +54,9 @@ public class HadisViewController {
         txtHadis.setText(hadis.getHadisText().trim());
 
         if(hadis.isBookmark()) {
-            btnBookmark.setGraphic(getBookmarkFillIcon());
+            btnBookmark.setGraphic(UtilController.getBookmarkFillIcon());
         } else {
-            btnBookmark.setGraphic(getBookmarkIcon());
+            btnBookmark.setGraphic(UtilController.getBookmarkIcon());
         }
 
         MainApp.stage.widthProperty().addListener(new ChangeListener<Number>() {
@@ -75,19 +68,10 @@ public class HadisViewController {
 
         txtHadis.wrappingWidthProperty().setValue(MainApp.stage.getWidth() - 270);
 
-        btnCopy.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Clipboard clipboard = Clipboard.getSystemClipboard();
-                ClipboardContent content = new ClipboardContent();
-                content.putString(txtHadis.getText().trim());
-                clipboard.setContent(content);
-
-                Notifications notification = Notifications.create();
-                notification.text(Persian.COPIED_TO_CLIPBOARD);
-                notification.graphic(new FontIcon("bi-file-text-fill"));
-                notification.title(Persian.APP_NAME);
-                notification.show();
+        btnCopy.setOnAction(event->{
+            boolean result = UtilController.copyToClipboard(txtHadis.getText().trim());
+            if(result) {
+                UtilController.showCopyToClipboardNotification();
             }
         });
 
@@ -97,26 +81,28 @@ public class HadisViewController {
                 FontIcon icon = (FontIcon) btnBookmark.getGraphic();
                 String current_icon = icon.getIconLiteral();
                 if(current_icon.equals("bi-journal-bookmark")) {
-                    btnBookmark.setGraphic(getBookmarkFillIcon());
+                    btnBookmark.setGraphic(UtilController.getBookmarkFillIcon());
                     DBController.toggle_bookmark(hadis, true);
                 } else {
-                    btnBookmark.setGraphic(getBookmarkIcon());
+                    btnBookmark.setGraphic(UtilController.getBookmarkIcon());
                     DBController.toggle_bookmark(hadis, false);
                 }
             }
         });
 
+        btnSaveImage.setOnAction(event -> {
+            new Thread(() -> {
+                Platform.runLater(() -> {
+                    try {
+                        boolean result = UtilController.createHadisImage(hadis);
+                        UtilController.showHadisImageSaveNotification(result);
+                    } catch(Exception ex) {
+                        ex.printStackTrace();
+                    }
+                });
+            }, "Thread Save Hadis Image").start();
+
+        });
     }
 
-    public static FontIcon getBookmarkFillIcon() {
-        FontIcon icon = new FontIcon("bi-journal-bookmark-fill");
-        icon.setIconSize(15);
-        return icon;
-    }
-
-    public static FontIcon getBookmarkIcon() {
-        FontIcon icon = new FontIcon("bi-journal-bookmark");
-        icon.setIconSize(15);
-        return icon;
-    }
 }
