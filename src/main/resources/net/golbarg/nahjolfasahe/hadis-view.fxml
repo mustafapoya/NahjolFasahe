@@ -74,6 +74,11 @@
                         <FontIcon iconLiteral="bi-clipboard-check" iconSize="15" />
                      </graphic>
                   </Button>
+                  <Button fx:id="btnSaveImage" mnemonicParsing="false" prefHeight="29.0" prefWidth="29.0">
+                     <graphic>
+                        <FontIcon iconLiteral="bi-image" iconSize="15" />
+                     </graphic>
+                  </Button>
                </children>
                <padding>
                   <Insets left="2.0" right="2.0" />

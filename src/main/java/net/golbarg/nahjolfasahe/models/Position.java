@@ -52,4 +52,17 @@ public class Position {
         return screenVbHeight - stageHeight;
     }
 
+    public static double getTaskbarHeight2() {
+        final var screen = Screen.getPrimary();
+
+        final var screenVbWidth = screen.getVisualBounds().getWidth();
+        final var screenVbHeight = screen.getVisualBounds().getHeight();
+
+        final var screenWidth = screen.getBounds() .getWidth();
+        final var screenHeight = screen.getBounds() .getHeight();
+
+        System.out.println("Screen Visual Bounds......... w*h.: " + screenVbWidth + '*' + screenVbHeight);
+        System.out.println("Screen Bounds................ w*h.: " + screenWidth + '*' + screenHeight);
+        return (screenHeight - screenVbHeight);
+    }
 }

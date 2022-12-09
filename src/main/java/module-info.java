@@ -11,4 +11,8 @@ module net.golbarg.nahjolfasahe {
 
     opens net.golbarg.nahjolfasahe to javafx.fxml;
     exports net.golbarg.nahjolfasahe;
+    exports net.golbarg.nahjolfasahe.controller;
+    opens net.golbarg.nahjolfasahe.controller to javafx.fxml;
+    exports net.golbarg.nahjolfasahe.test;
+    opens net.golbarg.nahjolfasahe.test to javafx.fxml;
 }

@@ -1,8 +1,6 @@
 package net.golbarg.nahjolfasahe;
 
 import javafx.application.Platform;
-import javafx.application.Preloader;
-import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -25,12 +23,10 @@ import net.golbarg.nahjolfasahe.models.Category;
 import net.golbarg.nahjolfasahe.models.Hadis;
 import net.golbarg.nahjolfasahe.trans.Persian;
 import org.controlsfx.control.StatusBar;
-import org.controlsfx.control.action.Action;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Comparator;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -169,7 +165,7 @@ public class MainViewController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 try {
                     statusBar.setText(Persian.LOADING);
-                    FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("daily-hadis-view.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hadis-daily-view.fxml"));
                     BorderPane element = fxmlLoader.load();
                     Scene dailyHadisScene = new Scene(element);
                     dailyHadisScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());

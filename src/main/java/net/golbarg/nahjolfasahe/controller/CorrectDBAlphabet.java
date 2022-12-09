@@ -1,7 +1,7 @@
-package net.golbarg.nahjolfasahe;
+package net.golbarg.nahjolfasahe.controller;
 
 import javafx.collections.ObservableList;
-import net.golbarg.nahjolfasahe.models.Category;
+import net.golbarg.nahjolfasahe.DBController;
 import net.golbarg.nahjolfasahe.models.Hadis;
 
 public class CorrectDBAlphabet {
