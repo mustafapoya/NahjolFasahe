@@ -73,7 +73,7 @@ public class MainViewController implements Initializable {
 
     ObservableList<Category> allCategories = FXCollections.observableArrayList();
     FilteredList<Category> filteredList;
-
+    private Stage parentStage;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         statusBar.setText(Persian.LOADING_CATEGORY);
@@ -174,7 +174,9 @@ public class MainViewController implements Initializable {
                     dailyHadisStage.getIcons().add(new Image(getClass().getResourceAsStream("app_icon.png")));
                     dailyHadisStage.setTitle(Persian.APP_NAME);
                     dailyHadisStage.setScene(dailyHadisScene);
-                    dailyHadisStage.initOwner(MainApp.stage);
+                    if(parentStage != null) {
+                        dailyHadisStage.initOwner(parentStage);
+                    }
                     dailyHadisStage.setAlwaysOnTop(true);
                     dailyHadisStage.requestFocus();
                     dailyHadisStage.setResizable(false);
@@ -236,12 +238,16 @@ public class MainViewController implements Initializable {
                     FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hadis-view.fxml"));
                     VBox element = fxmlLoader.load();
                     HadisViewController controller = fxmlLoader.getController();
-                    controller.initializeData(hadis);
+                    controller.initializeData(hadis, parentStage);
                     Platform.runLater(() -> hadisContainer.getChildren().add(element));
                 }
             } catch(Exception ex) {
                 ex.printStackTrace();
             }
         }, "Thread Display Hadis").start();
+    }
+
+    public void setStage(Stage stage) {
+        this.parentStage = stage;
     }
 }

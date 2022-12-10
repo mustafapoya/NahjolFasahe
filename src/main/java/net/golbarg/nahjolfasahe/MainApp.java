@@ -12,6 +12,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import net.golbarg.nahjolfasahe.models.Position;
 import net.golbarg.nahjolfasahe.trans.Persian;
 
@@ -29,13 +30,14 @@ public class MainApp extends Application {
 
         stage.getIcons().add(new Image(getClass().getResourceAsStream("app_icon.png")));
 
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("main-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("splash-screen-view.fxml"));
         BorderPane root = fxmlLoader.load();
+        SplashScreenViewController controller = fxmlLoader.getController();
+        controller.setStage(stage);
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        stage.setMinWidth(740);
         stage.setTitle(Persian.APP_NAME);
         stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 
@@ -43,4 +45,7 @@ public class MainApp extends Application {
         launch();
     }
 
+    public static Stage getStage() {
+        return stage;
+    }
 }
