@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.golbarg.nahjolfasahe.SplashScreenViewController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imgBackground" fitHeight="260.0" fitWidth="480.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@splash_image.jpg" />
+               </image>
+            </ImageView>
+            <ProgressBar fx:id="progressBar" layoutY="250.0" prefHeight="10.0" prefWidth="480.0" progress="0.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
