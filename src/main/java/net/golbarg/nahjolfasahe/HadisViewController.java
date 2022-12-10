@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import net.golbarg.nahjolfasahe.controller.UtilController;
 import net.golbarg.nahjolfasahe.models.Hadis;
 import net.golbarg.nahjolfasahe.trans.Persian;
@@ -46,7 +47,7 @@ public class HadisViewController {
     @FXML
     private Text txtHadis;
 
-    public void initializeData(Hadis hadis) {
+    public void initializeData(Hadis hadis, Stage parentStage) {
 
         lblHadisCategory.setText(hadis.getCategory().getTitle());
         lblHadisSubCategory.setText(hadis.getSubCategory().getTitle());
@@ -59,14 +60,14 @@ public class HadisViewController {
             btnBookmark.setGraphic(UtilController.getBookmarkIcon());
         }
 
-        MainApp.stage.widthProperty().addListener(new ChangeListener<Number>() {
+        parentStage.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                txtHadis.wrappingWidthProperty().setValue(MainApp.stage.getWidth() - 270);
+                txtHadis.wrappingWidthProperty().setValue(parentStage.getWidth() - 270);
             }
         });
 
-        txtHadis.wrappingWidthProperty().setValue(MainApp.stage.getWidth() - 270);
+        txtHadis.wrappingWidthProperty().setValue(parentStage.getWidth() - 270);
 
         btnCopy.setOnAction(event->{
             boolean result = UtilController.copyToClipboard(txtHadis.getText().trim());
