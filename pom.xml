@@ -8,6 +8,7 @@
     <artifactId>NahjolFasahe</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>NahjolFasahe</name>
+    <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -96,14 +97,55 @@
                         <configuration>
                             <mainClass>net.golbarg.nahjolfasahe/net.golbarg.nahjolfasahe.MainApp</mainClass>
                             <launcher>app</launcher>
+                            <compress>2</compress>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
+                            <options>
+                                <option>
+
+                                </option>
+                            </options>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}/libs
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>libs/</classpathPrefix>
+                            <mainClass>
+                                net.golbarg.nahjolfasahe.MainApp
+                            </mainClass>
+                        </manifest>
+                    </archive>
+                    <finalName>setup</finalName>
+                </configuration>
             </plugin>
         </plugins>
     </build>
