@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -57,6 +58,7 @@ public class SplashScreenViewController implements Initializable {
     private void displayMainView() {
         try {
             Stage stage = new Stage();
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("app_icon.png")));
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("main-view.fxml"));
             BorderPane root = fxmlLoader.load();
             MainViewController controller = fxmlLoader.getController();
