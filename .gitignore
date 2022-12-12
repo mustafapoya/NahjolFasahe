@@ -27,3 +27,7 @@ replay_pid*
 /target/
 /out/
 /build/
+/dist/javafx/
+/dist/jdk/
+/dist/libs/
+/dist/assets/
