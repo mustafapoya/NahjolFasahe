@@ -4,6 +4,8 @@ import javafx.collections.ObservableList;
 import net.golbarg.nahjolfasahe.DBController;
 import net.golbarg.nahjolfasahe.models.Category;
 
+import java.io.File;
+
 public class TestDb {
     public static void main(String[] args) {
         DBController.checkDriver();
