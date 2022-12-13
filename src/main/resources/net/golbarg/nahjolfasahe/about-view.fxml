@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #37a6c2;">
+               <children>
+                  <Label graphicTextGap="5.0" text="برنامه نهج الفصاحة" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@app_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <ScrollPane hbarPolicy="NEVER" vbarPolicy="ALWAYS">
+               <content>
+                  <VBox>
+                     <children>
+                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="بسم اللَّه الرّحمن الرّحيم">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="کلمات گهربار پيامبرصلي الله عليه وآله ، آن شمس فروزان تاريکي ها و روشني بخش و هدايت گر انسان ها ، کلامي بر گرفته از وحي و الهامات الهي و تفسير کننده سخن حق است. اين سخنان ، تمامي احکام و مسائل مورد نياز زندگي انسان ها را در برگرفته ، به گونه اي که با هيچ مسئله اي مواجه نمي شويم ، جز آن که رهنمودهاي ايشان ، چراغ راه ما در آن مرحله است : «و نزّلنا عَليکَ الکِتابَ تِبياناً لِکُلّ شَي ءٍ»(1) ؛ و ما اين کتاب آسماني را بر تو نازل کرديم که بيان همه چيز در آن است.اگر تاريخ را ورق بزنيم ، نافذتر ، فرهنگ آفرين تر ، آگاهي بخش تر وتمدن سازتر از شخصيت والاي الهي او را پيدا نخواهيم کرد ؛ کسي که تمامي رفتار و کردارش مورد نظر و رضايت خداوند است.آن حضرت ، نه فقط در عرصه دين و اخلاق ، بلکه در تمام زمينه ها ، کلمات و راهنمايي نافذ و هدايت گري دارد.اوست پيامبري که داراي خلق عظيم است : «إنّکَ لَعَلي خُلُقٍ عَظيمٍ»(2) ؛ به راستي که تو را خويي والاست.اوست پيامبري که نرمخوي و مهربان است : «فَبِما رَحمَةٍ مِنَ اللَّه لِنتَ لَهُم و لَو کُنتَ فَظّاً غَليظَ القَلبِ لانفَضُّوا مِن حَولِکَ»(3) ؛ پس به (برکت)رحمت الهي با آنان نرمخو (و پرمهر)شدي و اگر تند خو و سخت دل بودي ، قطعاً از پيرامون تو پراکنده مي شدند.اوست پيامبري که دعوت گر به سوي خدا و چراغ فروزان است : «و داعِياً إلَي اللَّه بِإذنِهِ و سِراجاً مُنيراً»(4) ؛ و دعوت کننده به سوي خدا به فرمان او ، و چراغي تابناک است.او متصّف به جميع صفات خوبان و نيکان است : «آنچه همه خوبان دارند تو تنها داري».وجود مقدس پيامبر اسلام صلي الله عليه وآله همچون خورشيد تاباني است که ظلمت هاي جهل و شرک و نفاق و کفر را از افق آسمان روح انسان ها مي زدايد و انسان را تا منتهي اليه کمال - جايي که انسان بجز خدا را نبيند - مي کشاند." wrappingWidth="580.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #37a6c2;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="SOMETIMES">
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@golbarg.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER_LEFT">
+                     <children>
+                        <Label text="گلبرگ" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label text="شرکت توسعه نرم افزاری" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" prefWidth="200.0" spacing="3.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="65.0" prefWidth="80.0" style="-fx-background-radius: 0px 0px 10px 10px;" text="WEBSITE">
+                     <graphic>
+                        <FontIcon iconColor="#fe9003" iconLiteral="bi-globe" iconSize="30" />
+                     </graphic>
+                  </Button>
+                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="65.0" prefWidth="80.0" style="-fx-background-radius: 0px 0px 10px 10px;" text="FACEBOOK">
+                     <graphic>
+                        <FontIcon iconColor="#0f98d3" iconLiteral="bi-facebook" iconSize="30" />
+                     </graphic>
+                  </Button>
+                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="65.0" prefWidth="80.0" style="-fx-background-radius: 0px 0px 10px 10px;" text="GitHub">
+                     <graphic>
+                        <FontIcon iconLiteral="bi-github" iconSize="30" />
+                     </graphic>
+                  </Button>
+                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="65.0" prefWidth="80.0" style="-fx-background-radius: 0px 0px 10px 10px;" text="Linkedin">
+                     <graphic>
+                        <FontIcon iconColor="#0075bf" iconLiteral="bi-linkedin" iconSize="30" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

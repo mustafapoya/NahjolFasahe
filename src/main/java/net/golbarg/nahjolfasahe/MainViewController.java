@@ -42,6 +42,8 @@ public class MainViewController implements Initializable {
     private Button btnBookmarks;
     @FXML
     private Button btnDailyHadis;
+    @FXML
+    private Button btnInfo;
 
     @FXML
     private SplitPane splitPane;
@@ -186,6 +188,30 @@ public class MainViewController implements Initializable {
                 } catch(Exception ex) {
                     ex.printStackTrace();
                 }
+            }
+        });
+
+        btnInfo.setOnAction(event -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("about-view.fxml"));
+                BorderPane element = fxmlLoader.load();
+                Scene aboutScene = new Scene(element);
+                aboutScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+                Stage aboutSage = new Stage();
+                aboutSage.getIcons().add(new Image(getClass().getResourceAsStream("app_icon.png")));
+                aboutSage.setTitle(Persian.APP_NAME);
+                aboutSage.setScene(aboutScene);
+                if(parentStage != null) {
+                    aboutSage.initOwner(parentStage);
+                }
+                aboutSage.setAlwaysOnTop(true);
+                aboutSage.requestFocus();
+                aboutSage.setResizable(false);
+                aboutSage.initStyle(StageStyle.DECORATED);
+                aboutSage.showAndWait();
+            } catch(Exception ex) {
+                ex.printStackTrace();
             }
         });
     }
