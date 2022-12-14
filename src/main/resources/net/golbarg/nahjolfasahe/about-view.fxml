@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.golbarg.nahjolfasahe.AboutViewController">
+   <center>
+      <VBox fx:id="vbCenter" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="hbAppTitle" alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #37a6c2;">
+               <children>
+                  <Label fx:id="lblAppName" graphicTextGap="5.0" text="برنامه نهج الفصاحة" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@app_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <ScrollPane fx:id="spContent" hbarPolicy="NEVER" vbarPolicy="ALWAYS">
+               <content>
+                  <VBox fx:id="vbContent">
+                     <children>
+                        <Text fx:id="txtBesmellah" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="بسم اللَّه الرّحمن الرّحيم">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="txtDescription" strokeType="OUTSIDE" strokeWidth="0.0" text="کتاب نهج الفصاحة مجموعه از کلمات قصار پیامبر اکرم صلی الله علیه و آل و سلم می باشد." wrappingWidth="580.0">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="txtDescription1" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمات گهربار پیامبر صلی الله علیه و آل و سلم، آن شمس فروزان تاریکی ها و روشنی بخش و هدایت گر انسان ها، کلامی برگرفته از وحی و الهامات الهی و تفسیر کننده سخن حق است. این سخنان، تمامی احکام و مسائل مورد نیاز زندگی انسان ها را دربرگرفته، به گونه ای که با هیچ مسئله ای مواجه نمی شویم، جز آن که رهنمودی ایشان، چراغ راه ما در آن مرحله است: ((و نزّلنا عَليکَ الکِتابَ تِبياناً لِکُلّ شَي ءٍ))؛ و ما این کتاب آسمانی را بر تو نازل کردیم که بیان همه چیز در آن است." wrappingWidth="580.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="txtDescription11" strokeType="OUTSIDE" strokeWidth="0.0" text="اگر تاریخ را ورق بزنیم، نافذتر، فرهنگ آفرین تر، آگاهی بخش تر و تمدن ساز تر از شخصیت والای الهی او پیدا نخواهیم کرد؛ کسی که تمامی رفتار و کردارش مورد نظر و رضایت خداوند است." wrappingWidth="580.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="txtDescription111" layoutX="15.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="آن حضرت، نه فقط در عرصه دین و اخلاق، بلکه در تمام زمینه ها، کلمات و رهنمایی نافذ و هدایت گری دارد، اوست پیامبری که دارای خلق عظیم است: ((إنّکَ لَعَلي خُلُقٍ عَظيمٍ))؛ به راستی که تو را خویی والاست." wrappingWidth="580.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="txtDescription1111" layoutX="15.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="این برنامه که برگرفته از کتاب نهج الفصاحه میباشد جهت دیجیتل سازی و استفاده آسان از کلمات گهربار پیامبر صلی الله علیه و آل و سلم ایجاد گردیده است، در این مجموعه احادیث به 379 بخش تقسیم شده است که در مجموع شامل 3728 حدیث میباشد. " wrappingWidth="580.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="txtDescription11111" layoutX="15.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="استفاده از این نرم افزار رایگان میباشد با ذکر صلواتی بر محمد و آل محمد." wrappingWidth="580.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox fx:id="hbBottom" alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #37a6c2;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="hbBottomRight" alignment="CENTER_LEFT" HBox.hgrow="SOMETIMES">
+               <children>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@golbarg.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER_LEFT">
+                     <children>
+                        <Label text="گلبرگ" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label text="شرکت توسعه نرم افزاری" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="hbBottomLeft" alignment="BOTTOM_RIGHT" prefWidth="200.0" spacing="2.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnWebsite" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 10px 10px 0px 0px;" text="Golbarg">
+                     <graphic>
+                        <FontIcon iconColor="#fe9003" iconLiteral="bi-globe" iconSize="30" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnYoutube" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 10px 10px 0px 0px;" text="YouTube">
+                     <graphic>
+                        <FontIcon iconColor="#d11111" iconLiteral="bi-youtube" iconSize="30" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnGithub" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 10px 10px 0px 0px;" text="GitHub">
+                     <graphic>
+                        <FontIcon iconLiteral="bi-github" iconSize="30" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnLinkedin" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 10px 10px 0px 0px;" text="Linkedin">
+                     <graphic>
+                        <FontIcon iconColor="#0075bf" iconLiteral="bi-linkedin" iconSize="30" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
