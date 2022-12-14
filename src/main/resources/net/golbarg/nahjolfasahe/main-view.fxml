@@ -16,13 +16,13 @@
 
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="720.0" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.golbarg.nahjolfasahe.MainViewController">
    <top>
-      <VBox fx:id="vbTop" prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbTop" alignment="CENTER" prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <ToolBar fx:id="toolBar" maxHeight="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefWidth="200.0" VBox.vgrow="ALWAYS">
               <items>
                 <Button fx:id="btnBookmarks" mnemonicParsing="false" prefHeight="40.0" text="یادداشت ها">
                      <graphic>
-                        <FontIcon iconLiteral="bi-journal-bookmark" iconSize="25" />
+                        <FontIcon iconColor="#0097ff" iconLiteral="bi-journal-bookmark" iconSize="25" />
                      </graphic>
                      <font>
                         <Font name="System Bold" size="14.0" />
@@ -30,7 +30,15 @@
                   </Button>
                   <Button fx:id="btnDailyHadis" mnemonicParsing="false" prefHeight="40.0" text="حدیث روز">
                      <graphic>
-                        <FontIcon iconColor="#ff7e00" iconLiteral="bi-brightness-alt-high-fill" iconSize="25" />
+                        <FontIcon iconColor="#0097ff" iconLiteral="bi-brightness-alt-high-fill" iconSize="25" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnInfo" mnemonicParsing="false" prefHeight="40.0" text="درباره">
+                     <graphic>
+                        <FontIcon iconColor="#0097ff" iconLiteral="bi-info-square" iconSize="25" />
                      </graphic>
                      <font>
                         <Font name="System Bold" size="14.0" />
