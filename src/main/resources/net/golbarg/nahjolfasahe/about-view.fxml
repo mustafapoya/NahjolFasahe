@@ -13,14 +13,13 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.golbarg.nahjolfasahe.AboutViewController">
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbCenter" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #37a6c2;">
+            <HBox fx:id="hbAppTitle" alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #37a6c2;">
                <children>
-                  <Label graphicTextGap="5.0" text="برنامه نهج الفصاحة" textFill="WHITE">
+                  <Label fx:id="lblAppName" graphicTextGap="5.0" text="برنامه نهج الفصاحة" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -37,11 +36,11 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <ScrollPane hbarPolicy="NEVER" vbarPolicy="ALWAYS">
+            <ScrollPane fx:id="spContent" hbarPolicy="NEVER" vbarPolicy="ALWAYS">
                <content>
-                  <VBox>
+                  <VBox fx:id="vbContent">
                      <children>
-                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="بسم اللَّه الرّحمن الرّحيم">
+                        <Text fx:id="txtBesmellah" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="بسم اللَّه الرّحمن الرّحيم">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -49,14 +48,57 @@
                               <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="کلمات گهربار پيامبرصلي الله عليه وآله ، آن شمس فروزان تاريکي ها و روشني بخش و هدايت گر انسان ها ، کلامي بر گرفته از وحي و الهامات الهي و تفسير کننده سخن حق است. اين سخنان ، تمامي احکام و مسائل مورد نياز زندگي انسان ها را در برگرفته ، به گونه اي که با هيچ مسئله اي مواجه نمي شويم ، جز آن که رهنمودهاي ايشان ، چراغ راه ما در آن مرحله است : «و نزّلنا عَليکَ الکِتابَ تِبياناً لِکُلّ شَي ءٍ»(1) ؛ و ما اين کتاب آسماني را بر تو نازل کرديم که بيان همه چيز در آن است.اگر تاريخ را ورق بزنيم ، نافذتر ، فرهنگ آفرين تر ، آگاهي بخش تر وتمدن سازتر از شخصيت والاي الهي او را پيدا نخواهيم کرد ؛ کسي که تمامي رفتار و کردارش مورد نظر و رضايت خداوند است.آن حضرت ، نه فقط در عرصه دين و اخلاق ، بلکه در تمام زمينه ها ، کلمات و راهنمايي نافذ و هدايت گري دارد.اوست پيامبري که داراي خلق عظيم است : «إنّکَ لَعَلي خُلُقٍ عَظيمٍ»(2) ؛ به راستي که تو را خويي والاست.اوست پيامبري که نرمخوي و مهربان است : «فَبِما رَحمَةٍ مِنَ اللَّه لِنتَ لَهُم و لَو کُنتَ فَظّاً غَليظَ القَلبِ لانفَضُّوا مِن حَولِکَ»(3) ؛ پس به (برکت)رحمت الهي با آنان نرمخو (و پرمهر)شدي و اگر تند خو و سخت دل بودي ، قطعاً از پيرامون تو پراکنده مي شدند.اوست پيامبري که دعوت گر به سوي خدا و چراغ فروزان است : «و داعِياً إلَي اللَّه بِإذنِهِ و سِراجاً مُنيراً»(4) ؛ و دعوت کننده به سوي خدا به فرمان او ، و چراغي تابناک است.او متصّف به جميع صفات خوبان و نيکان است : «آنچه همه خوبان دارند تو تنها داري».وجود مقدس پيامبر اسلام صلي الله عليه وآله همچون خورشيد تاباني است که ظلمت هاي جهل و شرک و نفاق و کفر را از افق آسمان روح انسان ها مي زدايد و انسان را تا منتهي اليه کمال - جايي که انسان بجز خدا را نبيند - مي کشاند." wrappingWidth="580.0">
+                        <Text fx:id="txtDescription" strokeType="OUTSIDE" strokeWidth="0.0" text="کتاب نهج الفصاحة مجموعه از کلمات قصار پیامبر اکرم صلی الله علیه و آل و سلم می باشد." wrappingWidth="580.0">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="15.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="txtDescription1" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمات گهربار پیامبر صلی الله علیه و آل و سلم، آن شمس فروزان تاریکی ها و روشنی بخش و هدایت گر انسان ها، کلامی برگرفته از وحی و الهامات الهی و تفسیر کننده سخن حق است. این سخنان، تمامی احکام و مسائل مورد نیاز زندگی انسان ها را دربرگرفته، به گونه ای که با هیچ مسئله ای مواجه نمی شویم، جز آن که رهنمودی ایشان، چراغ راه ما در آن مرحله است: ((و نزّلنا عَليکَ الکِتابَ تِبياناً لِکُلّ شَي ءٍ))؛ و ما این کتاب آسمانی را بر تو نازل کردیم که بیان همه چیز در آن است." wrappingWidth="580.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="txtDescription11" strokeType="OUTSIDE" strokeWidth="0.0" text="اگر تاریخ را ورق بزنیم، نافذتر، فرهنگ آفرین تر، آگاهی بخش تر و تمدن ساز تر از شخصیت والای الهی او پیدا نخواهیم کرد؛ کسی که تمامی رفتار و کردارش مورد نظر و رضایت خداوند است." wrappingWidth="580.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="txtDescription111" layoutX="15.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="آن حضرت، نه فقط در عرصه دین و اخلاق، بلکه در تمام زمینه ها، کلمات و رهنمایی نافذ و هدایت گری دارد، اوست پیامبری که دارای خلق عظیم است: ((إنّکَ لَعَلي خُلُقٍ عَظيمٍ))؛ به راستی که تو را خویی والاست." wrappingWidth="580.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="txtDescription1111" layoutX="15.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="این برنامه که برگرفته از کتاب نهج الفصاحه میباشد جهت دیجیتل سازی و استفاده آسان از کلمات گهربار پیامبر صلی الله علیه و آل و سلم ایجاد گردیده است، در این مجموعه احادیث به 379 بخش تقسیم شده است که در مجموع شامل 3728 حدیث میباشد. " wrappingWidth="580.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="txtDescription11111" layoutX="15.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="استفاده از این نرم افزار رایگان میباشد با ذکر صلواتی بر محمد و آل محمد." wrappingWidth="580.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </Text>
                      </children>
                      <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </VBox>
                </content>
@@ -65,11 +107,11 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #37a6c2;" BorderPane.alignment="CENTER">
+      <HBox fx:id="hbBottom" alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #37a6c2;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" HBox.hgrow="SOMETIMES">
+            <HBox fx:id="hbBottomRight" alignment="CENTER_LEFT" HBox.hgrow="SOMETIMES">
                <children>
-                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@golbarg.png" />
                      </image>
@@ -93,24 +135,24 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <HBox alignment="TOP_RIGHT" prefWidth="200.0" spacing="3.0" HBox.hgrow="ALWAYS">
+            <HBox fx:id="hbBottomLeft" alignment="BOTTOM_RIGHT" prefWidth="200.0" spacing="2.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="65.0" prefWidth="80.0" style="-fx-background-radius: 0px 0px 10px 10px;" text="WEBSITE">
+                  <Button fx:id="btnWebsite" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 10px 10px 0px 0px;" text="Golbarg">
                      <graphic>
                         <FontIcon iconColor="#fe9003" iconLiteral="bi-globe" iconSize="30" />
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="65.0" prefWidth="80.0" style="-fx-background-radius: 0px 0px 10px 10px;" text="FACEBOOK">
+                  <Button fx:id="btnYoutube" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 10px 10px 0px 0px;" text="YouTube">
                      <graphic>
-                        <FontIcon iconColor="#0f98d3" iconLiteral="bi-facebook" iconSize="30" />
+                        <FontIcon iconColor="#d11111" iconLiteral="bi-youtube" iconSize="30" />
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="65.0" prefWidth="80.0" style="-fx-background-radius: 0px 0px 10px 10px;" text="GitHub">
+                  <Button fx:id="btnGithub" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 10px 10px 0px 0px;" text="GitHub">
                      <graphic>
                         <FontIcon iconLiteral="bi-github" iconSize="30" />
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="65.0" prefWidth="80.0" style="-fx-background-radius: 0px 0px 10px 10px;" text="Linkedin">
+                  <Button fx:id="btnLinkedin" contentDisplay="TOP" mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 10px 10px 0px 0px;" text="Linkedin">
                      <graphic>
                         <FontIcon iconColor="#0075bf" iconLiteral="bi-linkedin" iconSize="30" />
                      </graphic>

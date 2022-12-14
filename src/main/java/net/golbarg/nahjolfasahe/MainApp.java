@@ -1,6 +1,7 @@
 package net.golbarg.nahjolfasahe;
 
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
@@ -23,10 +24,11 @@ import java.io.IOException;
 public class MainApp extends Application {
 
     public static Stage stage;
-
+    public static HostServices hostServices;
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
+        this.hostServices = getHostServices();
 
         stage.getIcons().add(new Image(getClass().getResourceAsStream("app_icon.png")));
 
@@ -39,6 +41,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
+
     }
 
     public static void main(String[] args) {
@@ -48,4 +51,6 @@ public class MainApp extends Application {
     public static Stage getStage() {
         return stage;
     }
+
+
 }
