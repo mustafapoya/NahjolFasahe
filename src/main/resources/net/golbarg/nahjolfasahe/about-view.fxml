@@ -17,9 +17,9 @@
    <center>
       <VBox fx:id="vbCenter" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox fx:id="hbAppTitle" alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #37a6c2;">
+            <HBox fx:id="hbAppTitle" alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #ABDDF8FF;">
                <children>
-                  <Label fx:id="lblAppName" graphicTextGap="5.0" text="برنامه نهج الفصاحة" textFill="WHITE">
+                  <Label fx:id="lblAppName" graphicTextGap="5.0" styleClass="txtAppTitle" text="برنامه نهج الفصاحة">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -27,9 +27,6 @@
                            </image>
                         </ImageView>
                      </graphic>
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
                   </Label>
                </children>
                <padding>
@@ -38,9 +35,9 @@
             </HBox>
             <ScrollPane fx:id="spContent" hbarPolicy="NEVER" vbarPolicy="ALWAYS">
                <content>
-                  <VBox fx:id="vbContent">
+                  <VBox fx:id="vbContent" style="-fx-background-color: #e0f2fc;">
                      <children>
-                        <Text fx:id="txtBesmellah" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="بسم اللَّه الرّحمن الرّحيم">
+                        <Text fx:id="txtBesmellah" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtAbout" text="بسم اللَّه الرّحمن الرّحيم">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -48,7 +45,7 @@
                               <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
                         </Text>
-                        <Text fx:id="txtDescription" strokeType="OUTSIDE" strokeWidth="0.0" text="کتاب نهج الفصاحة مجموعه از کلمات قصار پیامبر اکرم صلی الله علیه و آل و سلم می باشد." wrappingWidth="580.0">
+                        <Text fx:id="txtDescription" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtAbout" text="کتاب نهج الفصاحة مجموعه از کلمات قصار پیامبر اکرم صلی الله علیه و آل و سلم می باشد." wrappingWidth="580.0">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -56,7 +53,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Text>
-                        <Text fx:id="txtDescription1" strokeType="OUTSIDE" strokeWidth="0.0" text="کلمات گهربار پیامبر صلی الله علیه و آل و سلم، آن شمس فروزان تاریکی ها و روشنی بخش و هدایت گر انسان ها، کلامی برگرفته از وحی و الهامات الهی و تفسیر کننده سخن حق است. این سخنان، تمامی احکام و مسائل مورد نیاز زندگی انسان ها را دربرگرفته، به گونه ای که با هیچ مسئله ای مواجه نمی شویم، جز آن که رهنمودی ایشان، چراغ راه ما در آن مرحله است: ((و نزّلنا عَليکَ الکِتابَ تِبياناً لِکُلّ شَي ءٍ))؛ و ما این کتاب آسمانی را بر تو نازل کردیم که بیان همه چیز در آن است." wrappingWidth="580.0">
+                        <Text fx:id="txtDescription1" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtAbout" text="کلمات گهربار پیامبر صلی الله علیه و آل و سلم، آن شمس فروزان تاریکی ها و روشنی بخش و هدایت گر انسان ها، کلامی برگرفته از وحی و الهامات الهی و تفسیر کننده سخن حق است. این سخنان، تمامی احکام و مسائل مورد نیاز زندگی انسان ها را دربرگرفته، به گونه ای که با هیچ مسئله ای مواجه نمی شویم، جز آن که رهنمودی ایشان، چراغ راه ما در آن مرحله است: ((و نزّلنا عَليکَ الکِتابَ تِبياناً لِکُلّ شَي ءٍ))؛ و ما این کتاب آسمانی را بر تو نازل کردیم که بیان همه چیز در آن است." wrappingWidth="580.0">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -64,7 +61,7 @@
                               <Insets top="5.0" />
                            </VBox.margin>
                         </Text>
-                        <Text fx:id="txtDescription11" strokeType="OUTSIDE" strokeWidth="0.0" text="اگر تاریخ را ورق بزنیم، نافذتر، فرهنگ آفرین تر، آگاهی بخش تر و تمدن ساز تر از شخصیت والای الهی او پیدا نخواهیم کرد؛ کسی که تمامی رفتار و کردارش مورد نظر و رضایت خداوند است." wrappingWidth="580.0">
+                        <Text fx:id="txtDescription11" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtAbout" text="اگر تاریخ را ورق بزنیم، نافذتر، فرهنگ آفرین تر، آگاهی بخش تر و تمدن ساز تر از شخصیت والای الهی او پیدا نخواهیم کرد؛ کسی که تمامی رفتار و کردارش مورد نظر و رضایت خداوند است." wrappingWidth="580.0">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -72,7 +69,7 @@
                               <Insets top="5.0" />
                            </VBox.margin>
                         </Text>
-                        <Text fx:id="txtDescription111" layoutX="15.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="آن حضرت، نه فقط در عرصه دین و اخلاق، بلکه در تمام زمینه ها، کلمات و رهنمایی نافذ و هدایت گری دارد، اوست پیامبری که دارای خلق عظیم است: ((إنّکَ لَعَلي خُلُقٍ عَظيمٍ))؛ به راستی که تو را خویی والاست." wrappingWidth="580.0">
+                        <Text fx:id="txtDescription111" layoutX="15.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtAbout" text="آن حضرت، نه فقط در عرصه دین و اخلاق، بلکه در تمام زمینه ها، کلمات و رهنمایی نافذ و هدایت گری دارد، اوست پیامبری که دارای خلق عظیم است: ((إنّکَ لَعَلي خُلُقٍ عَظيمٍ))؛ به راستی که تو را خویی والاست." wrappingWidth="580.0">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -80,7 +77,7 @@
                               <Insets top="5.0" />
                            </VBox.margin>
                         </Text>
-                        <Text fx:id="txtDescription1111" layoutX="15.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="این برنامه که برگرفته از کتاب نهج الفصاحه میباشد جهت دیجیتل سازی و استفاده آسان از کلمات گهربار پیامبر صلی الله علیه و آل و سلم ایجاد گردیده است، در این مجموعه احادیث به 379 بخش تقسیم شده است که در مجموع شامل 3728 حدیث میباشد. " wrappingWidth="580.0">
+                        <Text fx:id="txtDescription1111" layoutX="15.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtAbout" text="این برنامه که برگرفته از کتاب نهج الفصاحه میباشد جهت دیجیتل سازی و استفاده آسان از کلمات گهربار پیامبر صلی الله علیه و آل و سلم ایجاد گردیده است، در این مجموعه احادیث به 379 بخش تقسیم شده است که در مجموع شامل 3728 حدیث میباشد. " wrappingWidth="580.0">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -88,7 +85,7 @@
                               <Insets top="5.0" />
                            </VBox.margin>
                         </Text>
-                        <Text fx:id="txtDescription11111" layoutX="15.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="استفاده از این نرم افزار رایگان میباشد با ذکر صلواتی بر محمد و آل محمد." wrappingWidth="580.0">
+                        <Text fx:id="txtDescription11111" layoutX="15.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtAbout" text="استفاده از این نرم افزار رایگان میباشد با ذکر صلواتی بر محمد و آل محمد." wrappingWidth="580.0">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -107,7 +104,7 @@
       </VBox>
    </center>
    <bottom>
-      <HBox fx:id="hbBottom" alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #37a6c2;" BorderPane.alignment="CENTER">
+      <HBox fx:id="hbBottom" alignment="CENTER_LEFT" prefWidth="200.0" style="-fx-background-color: #ABDDF8FF;" BorderPane.alignment="CENTER">
          <children>
             <HBox fx:id="hbBottomRight" alignment="CENTER_LEFT" HBox.hgrow="SOMETIMES">
                <children>
@@ -118,15 +115,9 @@
                   </ImageView>
                   <VBox alignment="CENTER_LEFT">
                      <children>
-                        <Label text="گلبرگ" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="26.0" />
-                           </font>
+                        <Label styleClass="lblGolbarg" text="گلبرگ">
                         </Label>
-                        <Label text="شرکت توسعه نرم افزاری" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
+                        <Label styleClass="lblGolbargDesc" text="شرکت توسعه نرم افزاری">
                         </Label>
                      </children>
                   </VBox>

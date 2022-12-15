@@ -20,29 +20,20 @@
          <children>
             <ToolBar fx:id="toolBar" maxHeight="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefWidth="200.0" VBox.vgrow="ALWAYS">
               <items>
-                <Button fx:id="btnBookmarks" mnemonicParsing="false" prefHeight="40.0" text="یادداشت ها">
+                <Button fx:id="btnBookmarks" mnemonicParsing="false" prefHeight="40.0" styleClass="btnToolbar" text="یادداشت ها">
                      <graphic>
                         <FontIcon iconColor="#0097ff" iconLiteral="bi-journal-bookmark" iconSize="25" />
                      </graphic>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
                   </Button>
-                  <Button fx:id="btnDailyHadis" mnemonicParsing="false" prefHeight="40.0" text="حدیث روز">
+                  <Button fx:id="btnDailyHadis" mnemonicParsing="false" prefHeight="40.0" styleClass="btnToolbar" text="حدیث روز">
                      <graphic>
                         <FontIcon iconColor="#0097ff" iconLiteral="bi-brightness-alt-high-fill" iconSize="25" />
                      </graphic>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
                   </Button>
-                  <Button fx:id="btnInfo" mnemonicParsing="false" prefHeight="40.0" text="درباره">
+                  <Button fx:id="btnInfo" mnemonicParsing="false" prefHeight="40.0" styleClass="btnToolbar" text="درباره">
                      <graphic>
                         <FontIcon iconColor="#0097ff" iconLiteral="bi-info-square" iconSize="25" />
                      </graphic>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
                   </Button>
               </items>
             </ToolBar>
