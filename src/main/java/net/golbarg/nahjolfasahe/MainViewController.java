@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -42,6 +43,8 @@ public class MainViewController implements Initializable {
     private Button btnBookmarks;
     @FXML
     private Button btnDailyHadis;
+    @FXML
+    private Button btnInfo;
 
     @FXML
     private SplitPane splitPane;
@@ -116,7 +119,7 @@ public class MainViewController implements Initializable {
                         statusBar.setText(Persian.LOADING + ": " + newValue.getTitle());
                         ObservableList<Hadis> hadisList = DBController.getHadisOf(newValue.getTitle());
                         displayHadis(hadisList);
-                        statusBar.setText(Persian.DISPLAY_HADIS_OF + ": " + newValue.getTitle());
+                        statusBar.setText(Persian.DISPLAY_HADIS_OF + ": " + newValue.getTitle() + "(" + hadisList.size()  + " " + Persian.HADIS + ")");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -130,8 +133,11 @@ public class MainViewController implements Initializable {
                 try {
                     String searchText = txtSearchHadis.getText();
                     if(searchText.length() > 0) {
+                        statusBar.setText(Persian.SEARCHING_FOR + searchText);
                         ObservableList<Hadis> hadisList = DBController.searchHadisOf(searchText);
                         displayHadis(hadisList);
+                        statusBar.setText(Persian.FINDED_HADISES + ": " + searchText + " (" + hadisList.size() + " " + Persian.HADIS + ")");
+
                     } else {
                         statusBar.setText(Persian.FIRST_TYPE_TO_SEARCH);
                         statusBar.setStyle("-fx-text-fill: red;");
@@ -153,7 +159,7 @@ public class MainViewController implements Initializable {
                     listViewCategory.getSelectionModel().clearSelection();
                     ObservableList<Hadis> hadisList = DBController.getBookmarkedHadises();
                     displayHadis(hadisList);
-                    statusBar.setText(Persian.LOADING_DONE);
+                    statusBar.setText(Persian.DISPLAYED_BOOKMARKED_HADISES);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -177,6 +183,7 @@ public class MainViewController implements Initializable {
                     if(parentStage != null) {
                         dailyHadisStage.initOwner(parentStage);
                     }
+                    dailyHadisStage.initModality(Modality.WINDOW_MODAL);
                     dailyHadisStage.setAlwaysOnTop(true);
                     dailyHadisStage.requestFocus();
                     dailyHadisStage.setResizable(false);
@@ -188,9 +195,33 @@ public class MainViewController implements Initializable {
                 }
             }
         });
+
+        btnInfo.setOnAction(event -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("about-view.fxml"));
+                BorderPane element = fxmlLoader.load();
+                Scene aboutScene = new Scene(element);
+                aboutScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+                Stage aboutSage = new Stage();
+                aboutSage.getIcons().add(new Image(getClass().getResourceAsStream("app_icon.png")));
+                aboutSage.setTitle(Persian.APP_NAME);
+                aboutSage.setScene(aboutScene);
+                if(parentStage != null) {
+                    aboutSage.initOwner(parentStage);
+                }
+                aboutSage.initModality(Modality.WINDOW_MODAL);
+                aboutSage.setAlwaysOnTop(true);
+                aboutSage.requestFocus();
+                aboutSage.setResizable(false);
+                aboutSage.initStyle(StageStyle.DECORATED);
+                aboutSage.showAndWait();
+            } catch(Exception ex) {
+                ex.printStackTrace();
+            }
+        });
     }
-
-
+    
     private static Callback<ListView<Category>, ListCell<Category>> createCategoryListViewCellFactory() {
         return new Callback<ListView<Category>, ListCell<Category>>() {
             @Override

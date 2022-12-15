@@ -5,13 +5,14 @@ import javafx.collections.ObservableList;
 import net.golbarg.nahjolfasahe.models.Category;
 import net.golbarg.nahjolfasahe.models.Hadis;
 
+import java.io.File;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DBController {
-    public static final String DB_PATH = DBController.class.getResource("hadis_db.db").toString();
+    public static final String DB_PATH = new File(new File("").getAbsolutePath() + "/assets/hadis_db.db").getAbsolutePath();
     private static final String TABLE_HADIS = "hadises";
 
     public static boolean checkDriver() {

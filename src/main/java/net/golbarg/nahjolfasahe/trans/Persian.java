@@ -21,4 +21,8 @@ public class Persian {
     public static final String HADIS_IMAGE_SAVED = "عکس حدیث ذخیره شد";
     public static final String HADIS_IMAGE_NOT_SAVED = "عکس حدیث ذخیره نشد";
 
+    public static final String SEARCHING_FOR = "جستجو برای ";
+    public static final String FINDED_HADISES = "احادیث پیدا شده ";
+    public static final String DISPLAYED_BOOKMARKED_HADISES = "نمایش احادیث یادداشت شده";
+    public static final String HADIS = "حدیث";
 }
