@@ -20,6 +20,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import net.golbarg.nahjolfasahe.controller.UtilController;
 import net.golbarg.nahjolfasahe.models.Category;
 import net.golbarg.nahjolfasahe.models.Hadis;
 import net.golbarg.nahjolfasahe.trans.Persian;
@@ -188,6 +189,7 @@ public class MainViewController implements Initializable {
                     dailyHadisStage.requestFocus();
                     dailyHadisStage.setResizable(false);
                     dailyHadisStage.initStyle(StageStyle.DECORATED);
+                    UtilController.displayAtCenterOf(parentStage, dailyHadisStage);
                     dailyHadisStage.showAndWait();
                     statusBar.setText(Persian.DISPLAYED_DAILY_HADIS);
                 } catch(Exception ex) {
@@ -215,6 +217,7 @@ public class MainViewController implements Initializable {
                 aboutSage.requestFocus();
                 aboutSage.setResizable(false);
                 aboutSage.initStyle(StageStyle.DECORATED);
+                UtilController.displayAtCenterOf(parentStage, aboutSage);
                 aboutSage.showAndWait();
             } catch(Exception ex) {
                 ex.printStackTrace();
