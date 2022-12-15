@@ -6,6 +6,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
@@ -14,11 +15,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import net.golbarg.nahjolfasahe.models.Position;
+import net.golbarg.nahjolfasahe.controller.UtilController;
 import net.golbarg.nahjolfasahe.trans.Persian;
-
-import javax.imageio.ImageIO;
-import java.io.File;
 import java.io.IOException;
 
 public class MainApp extends Application {
@@ -41,7 +39,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
-
+        UtilController.displayAtCenter(stage);
     }
 
     public static void main(String[] args) {
