@@ -35,6 +35,7 @@ public class MainApp extends Application {
         SplashScreenViewController controller = fxmlLoader.getController();
         controller.setStage(stage);
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setTitle(Persian.APP_NAME);
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);

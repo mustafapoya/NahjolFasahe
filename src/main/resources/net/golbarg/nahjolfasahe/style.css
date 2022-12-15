@@ -1,11 +1,48 @@
 @font-face {
-    font-family: 'iran_sans_bold';
-    src: url('iran_sans_bold.ttf');
+    src: url('iran_sans_medium.ttf');
 }
 
 .root {
-    -fx-font-family: "iran_sans_bold";
+    -fx-font-family: "IRANSans Medium";
     -fx-text-fill: #000;
     -fx-base: rgb(171, 221, 248);
     -fx-background: rgb(225, 232, 248);
+}
+
+.button {
+    -fx-font-family: "IRANSans Medium";
+}
+
+.btnToolbar {
+    -fx-font-weight: bold;
+}
+
+.btnToolbar:hover {
+    -fx-font-weight: bold;
+}
+
+.text, .txtHadis, .txtAbout, .txtAppTitle {
+    -fx-font-family: "IRANSans Medium";
+}
+
+.txtAppTitle {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.lblGolbarg {
+    -fx-font-size: 18px;
+}
+
+.lblGolbargDesc {
+    -fx-font-size: 14px;
+}
+
+.progress-bar .bar {
+    -fx-background-color:
+            -fx-box-border,
+            linear-gradient(to bottom, derive(-fx-accent,95%), derive(-fx-accent,10%)),
+            #024941; /* this line is the background color of the bar */
+    -fx-background-insets: 0;
+    -fx-padding: 0; /* 5 */
 }
