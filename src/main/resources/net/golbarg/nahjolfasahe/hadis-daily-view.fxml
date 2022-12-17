@@ -13,18 +13,15 @@
 
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="240.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.golbarg.nahjolfasahe.HadisDailyViewController">
    <top>
-      <VBox fx:id="vbHeader" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #6bc7f9;" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbHeader" alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="100.0" style="-fx-background-color: #6bc7f9;" BorderPane.alignment="CENTER">
          <children>
             <HBox fx:id="hbHeader" alignment="CENTER">
                <children>
-                  <HBox fx:id="hbHeaderRight" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
+                  <HBox fx:id="hbHeaderRight" alignment="BOTTOM_LEFT" prefWidth="200.0" spacing="3.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label fx:id="lblHadisCategory" maxWidth="1.7976931348623157E308" style="-fx-background-color: green; -fx-text-fill: white; -fx-background-radius: 5;" text="دسته بندی">
+                        <Label fx:id="lblHadisCategory" maxWidth="1.7976931348623157E308" prefHeight="28.0" style="-fx-background-color: green; -fx-text-fill: white; -fx-background-radius: 5 5 0 0;" styleClass="lblCategory" text="دسته بندی">
                            <padding>
-                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                              <Insets bottom="3.0" left="2.0" right="2.0" top="2.0" />
                            </padding>
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -32,28 +29,31 @@
                            <graphic>
                               <FontIcon iconColor="WHITE" iconLiteral="bi-columns" />
                            </graphic>
+                           <HBox.margin>
+                              <Insets right="3.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="hbHeaderLeft" alignment="CENTER_RIGHT" spacing="3.0">
+                  <HBox fx:id="hbHeaderLeft" alignment="CENTER_RIGHT" spacing="3.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="btnCopy" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="کاپی">
+                        <Button fx:id="btnCopy" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" style="-fx-background-radius: 5 5 0 0;" text="کاپی">
                            <graphic>
                               <FontIcon iconLiteral="bi-clipboard-check" />
                            </graphic></Button>
-                        <Button fx:id="btnBookmark" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="نشانی">
+                        <Button fx:id="btnBookmark" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" style="-fx-background-radius: 5 5 0 0;" text="نشانی">
                            <graphic>
                               <FontIcon iconLiteral="bi-journal-bookmark" iconSize="15" />
                            </graphic>
                         </Button>
-                        <Button fx:id="btnSaveImage" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="ذخیره">
+                        <Button fx:id="btnSaveImage" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" style="-fx-background-radius: 5 5 0 0;" text="ذخیره">
                            <graphic>
                               <FontIcon iconLiteral="bi-image" iconSize="15" />
                            </graphic>
                         </Button>
                      </children>
                      <padding>
-                        <Insets right="3.0" />
+                        <Insets right="1.0" />
                      </padding>
                   </HBox>
                </children>

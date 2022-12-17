@@ -281,7 +281,7 @@ public class MainViewController implements Initializable {
         }, "Thread Display Hadis").start();
     }
 
-    public void setStage(Stage stage) {
+    public void setParentStage(Stage stage) {
         this.parentStage = stage;
     }
 }
