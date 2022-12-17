@@ -46,3 +46,7 @@
     -fx-background-insets: 0;
     -fx-padding: 0; /* 5 */
 }
+
+.lblCategory {
+    -fx-font-size: 10px;
+}

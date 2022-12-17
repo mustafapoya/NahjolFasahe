@@ -12,14 +12,11 @@
 
 <VBox fx:id="root" alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" nodeOrientation="RIGHT_TO_LEFT" prefWidth="500.0" style="-fx-background-color: #abddf8; -fx-border-color: #3aa3f6; -fx-border-width: 1;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.golbarg.nahjolfasahe.HadisViewController">
    <children>
-      <HBox fx:id="header" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #6bc7f9;">
+      <HBox fx:id="header" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #6bc7f9;">
          <children>
-            <HBox fx:id="headerRight" alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <HBox fx:id="headerRight" alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefWidth="200.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="lblHadisNumber" maxWidth="1.7976931348623157E308" style="-fx-background-color: green; -fx-text-fill: white; -fx-background-radius: 5;" text=" 1" HBox.hgrow="SOMETIMES">
-                     <padding>
-                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-                     </padding>
+                  <Label fx:id="lblHadisNumber" maxWidth="1.7976931348623157E308" prefHeight="28.0" style="-fx-background-color: green; -fx-text-fill: white; -fx-background-radius: 5 5 0 0;" styleClass="lblCategory" text=" 1" HBox.hgrow="SOMETIMES">
                      <HBox.margin>
                         <Insets right="3.0" />
                      </HBox.margin>
@@ -28,11 +25,11 @@
                      </font>
                      <graphic>
                         <FontIcon iconColor="WHITE" iconLiteral="bi-hash" />
-                     </graphic></Label>
-                  <Label fx:id="lblHadisCategory" maxWidth="1.7976931348623157E308" style="-fx-background-color: green; -fx-text-fill: white; -fx-background-radius: 5;" text="دسته بندی" HBox.hgrow="SOMETIMES">
+                     </graphic>
                      <padding>
-                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-                     </padding>
+                        <Insets bottom="3.0" left="2.0" right="2.0" top="2.0" />
+                     </padding></Label>
+                  <Label fx:id="lblHadisCategory" maxWidth="1.7976931348623157E308" prefHeight="28.0" style="-fx-background-color: green; -fx-text-fill: white; -fx-background-radius: 5 5 0 0;" styleClass="lblCategory" text="دسته بندی" HBox.hgrow="SOMETIMES">
                      <HBox.margin>
                         <Insets right="3.0" />
                      </HBox.margin>
@@ -42,11 +39,11 @@
                      <graphic>
                         <FontIcon iconColor="WHITE" iconLiteral="bi-columns" />
                      </graphic>
+                     <padding>
+                        <Insets bottom="3.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
                   </Label>
-                  <Label fx:id="lblHadisSubCategory" maxWidth="1.7976931348623157E308" style="-fx-background-color: green; -fx-text-fill: white; -fx-background-radius: 5;" text="زیر شاخه" HBox.hgrow="SOMETIMES">
-                     <padding>
-                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-                     </padding>
+                  <Label fx:id="lblHadisSubCategory" maxWidth="1.7976931348623157E308" prefHeight="28.0" style="-fx-background-color: green; -fx-text-fill: white; -fx-background-radius: 5 5 0 0;" styleClass="lblCategory" text="زیر شاخه" HBox.hgrow="SOMETIMES">
                      <HBox.margin>
                         <Insets right="3.0" />
                      </HBox.margin>
@@ -56,33 +53,30 @@
                      <graphic>
                         <FontIcon iconColor="WHITE" iconLiteral="bi-columns" />
                      </graphic>
+                     <padding>
+                        <Insets bottom="3.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
                   </Label>
                </children>
-               <padding>
-                  <Insets left="2.0" right="2.0" />
-               </padding>
             </HBox>
-            <HBox fx:id="headerLeft" alignment="CENTER_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="29.0" prefWidth="29.0" spacing="3.0" HBox.hgrow="ALWAYS">
+            <HBox fx:id="headerLeft" alignment="BOTTOM_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="29.0" prefWidth="29.0" spacing="3.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="btnBookmark" mnemonicParsing="false" prefHeight="29.0" prefWidth="29.0">
+                  <Button fx:id="btnBookmark" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" style="-fx-background-radius: 5 5 0 0;">
                      <graphic>
                         <FontIcon iconLiteral="bi-journal-bookmark" iconSize="15" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCopy" mnemonicParsing="false" prefHeight="29.0" prefWidth="29.0">
+                  <Button fx:id="btnCopy" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" style="-fx-background-radius: 5 5 0 0;">
                      <graphic>
                         <FontIcon iconLiteral="bi-clipboard-check" iconSize="15" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnSaveImage" mnemonicParsing="false" prefHeight="29.0" prefWidth="29.0">
+                  <Button fx:id="btnSaveImage" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" style="-fx-background-radius: 5 5 0 0;">
                      <graphic>
                         <FontIcon iconLiteral="bi-image" iconSize="15" />
                      </graphic>
                   </Button>
                </children>
-               <padding>
-                  <Insets left="2.0" right="2.0" />
-               </padding>
             </HBox>
          </children>
       </HBox>

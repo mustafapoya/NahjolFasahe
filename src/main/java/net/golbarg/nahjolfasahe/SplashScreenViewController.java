@@ -63,7 +63,7 @@ public class SplashScreenViewController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("main-view.fxml"));
             BorderPane root = fxmlLoader.load();
             MainViewController controller = fxmlLoader.getController();
-            controller.setStage(stage);
+            controller.setParentStage(stage);
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
             stage.setMinWidth(740);
