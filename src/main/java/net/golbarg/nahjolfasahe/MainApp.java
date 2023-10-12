@@ -18,6 +18,7 @@ import javafx.stage.StageStyle;
 import net.golbarg.nahjolfasahe.controller.UtilController;
 import net.golbarg.nahjolfasahe.trans.Persian;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class MainApp extends Application {
 
@@ -52,4 +53,32 @@ public class MainApp extends Application {
     }
 
 
+    public static String wordPattern(final String word){
+        HashMap<Character, Integer> map = new HashMap<>();
+        int count = 0;
+        for(char ch : word.toLowerCase().toCharArray()) {
+            if(!map.containsKey(ch)) {
+                map.put(ch, count++);
+            }
+        }
+
+        String result = "";
+        for(char ch : word.toLowerCase().toCharArray()) {
+            result += map.get(ch) + ".";
+        }
+
+        return result.substring(0, result.length()-1);
+    }
+
+    public static int[][] createBox(int width, int length) {
+        int [][] result = new int[length][width];
+
+        for(int i = 0; i < length; i++) {
+            for(int j = 0; j < width; j++) {
+                result[i][j] = 1 + Math.min(Math.min(i, length-i-1), Math.min(j, width-j-1));
+            }
+        }
+
+        return result;
+    }
 }
