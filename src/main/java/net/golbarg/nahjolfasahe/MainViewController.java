@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -26,7 +28,6 @@ import net.golbarg.nahjolfasahe.models.Hadis;
 import net.golbarg.nahjolfasahe.trans.Persian;
 import org.controlsfx.control.StatusBar;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Comparator;
 import java.util.ResourceBundle;
@@ -47,8 +48,8 @@ public class MainViewController implements Initializable {
     @FXML
     private Button btnInfo;
 
-    @FXML
-    private SplitPane splitPane;
+//    @FXML
+//    private SplitPane splitPane;
     // right panel
     @FXML
     private BorderPane borderPaneCategory;
@@ -71,27 +72,57 @@ public class MainViewController implements Initializable {
     private VBox hadisContainer;
 
     @FXML
+    private HBox hbPagination;
+    @FXML
+    private Button btnNextPage;
+    @FXML
+    private Button btnPrevPage;
+
+    @FXML
     private VBox vbBottom;
     @FXML
     private StatusBar statusBar;
 
+    ObservableList<Hadis> hadisList = FXCollections.observableArrayList();
+
     ObservableList<Category> allCategories = FXCollections.observableArrayList();
-    FilteredList<Category> filteredList;
+    FilteredList<Category> filteredListCategory;
     private Stage parentStage;
+
+    // pagination
+    private int current_page = 1;
+    private int data_per_page = 30;
+    private int number_of_pages = 0;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        hbPagination.setVisible(false);
+
         statusBar.setText(Persian.LOADING_CATEGORY);
         allCategories = DBController.getAllCategory();
-        filteredList = new FilteredList<>(allCategories, data -> true);
+        filteredListCategory = new FilteredList<>(allCategories, data -> true);
 
-        listViewCategory.setItems(filteredList);
+        listViewCategory.setItems(filteredListCategory);
         statusBar.setText(Persian.OK);
         listViewCategory.setCellFactory(createCategoryListViewCellFactory());
+
+        allCategories.addListener(new ListChangeListener<Category>() {
+            @Override
+            public void onChanged(Change<? extends Category> c) {
+                System.out.println("List changed");
+                if(allCategories.size() == 0) {
+                    hbPagination.setVisible(false);
+                } else {
+                    hbPagination.setVisible(true);
+                }
+            }
+        });
+
+
 
         txtSearchCategory.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                filterCategoryList(newValue, filteredList);
+                filterCategoryList(newValue, filteredListCategory);
             }
         });
 
@@ -99,13 +130,13 @@ public class MainViewController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(toggleCategory.isSelected()) {
-                    ObservableList<Category> list = filteredList.stream().sorted(Comparator.comparing(Category::getTitle))
+                    ObservableList<Category> list = filteredListCategory.stream().sorted(Comparator.comparing(Category::getTitle))
                                                                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
                     statusBar.setText(Persian.SORTED_CATEGORY);
                     listViewCategory.setItems(list);
                 } else {
                     statusBar.setText(Persian.SORTED_DEFAULT_CATEGORY);
-                    listViewCategory.setItems(filteredList);
+                    listViewCategory.setItems(filteredListCategory);
 
                 }
             }
@@ -118,8 +149,9 @@ public class MainViewController implements Initializable {
                 try {
                     if(newValue != null) {
                         statusBar.setText(Persian.LOADING + ": " + newValue.getTitle());
-                        ObservableList<Hadis> hadisList = DBController.getHadisOf(newValue.getTitle());
-                        displayHadis(hadisList);
+                        hadisList = DBController.getHadisOf(newValue.getTitle());
+                        current_page = 1;
+                        displayHadis();
                         statusBar.setText(Persian.DISPLAY_HADIS_OF + ": " + newValue.getTitle() + "(" + hadisList.size()  + " " + Persian.HADIS + ")");
                     }
                 } catch (Exception e) {
@@ -135,8 +167,9 @@ public class MainViewController implements Initializable {
                     String searchText = txtSearchHadis.getText();
                     if(searchText.length() > 0) {
                         statusBar.setText(Persian.SEARCHING_FOR + searchText);
-                        ObservableList<Hadis> hadisList = DBController.searchHadisOf(searchText);
-                        displayHadis(hadisList);
+                        hadisList = DBController.searchHadisOf(searchText);
+                        current_page = 1;
+                        displayHadis();
                         statusBar.setText(Persian.FINDED_HADISES + ": " + searchText + " (" + hadisList.size() + " " + Persian.HADIS + ")");
 
                     } else {
@@ -158,8 +191,9 @@ public class MainViewController implements Initializable {
                 try {
                     statusBar.setText(Persian.LOADING_BOOKMARKED_HADISES);
                     listViewCategory.getSelectionModel().clearSelection();
-                    ObservableList<Hadis> hadisList = DBController.getBookmarkedHadises();
-                    displayHadis(hadisList);
+                    hadisList = DBController.getBookmarkedHadises();
+                    current_page = 1;
+                    displayHadis();
                     statusBar.setText(Persian.DISPLAYED_BOOKMARKED_HADISES);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -223,6 +257,22 @@ public class MainViewController implements Initializable {
                 ex.printStackTrace();
             }
         });
+
+        btnNextPage.setOnAction(event -> {
+            System.out.println("btn next page");
+            if(current_page < number_of_pages) {
+                current_page++;
+                displayHadis();
+            }
+        });
+
+        btnPrevPage.setOnAction(event -> {
+            System.out.println("btn prev page");
+            if(current_page > 1) {
+                current_page--;
+                displayHadis();
+            }
+        });
     }
     
     private static Callback<ListView<Category>, ListCell<Category>> createCategoryListViewCellFactory() {
@@ -249,8 +299,8 @@ public class MainViewController implements Initializable {
         };
     }
 
-    private static void filterCategoryList(String newValue, FilteredList<Category> filteredList) {
-        filteredList.setPredicate(data -> {
+    private static void filterCategoryList(String newValue, FilteredList<Category> filteredListCategory) {
+        filteredListCategory.setPredicate(data -> {
             if(newValue == null || newValue.isEmpty()) {
                 return true;
             }
@@ -264,21 +314,48 @@ public class MainViewController implements Initializable {
         });
     }
 
-    private void displayHadis(ObservableList<Hadis> hadisList) throws IOException {
-        hadisContainer.getChildren().clear();
-        new Thread(() -> {
+    private void displayHadis() {
+        number_of_pages = (int) Math.ceil(hadisList.size() / (double)data_per_page);
+        // System.out.println("number of pages: " + number_of_pages);
+
+        if(current_page <= number_of_pages && current_page >= 1) {
+            hadisContainer.getChildren().clear();
             try {
-                for(Hadis hadis: hadisList) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hadis-view.fxml"));
-                    VBox element = fxmlLoader.load();
-                    HadisViewController controller = fxmlLoader.getController();
-                    controller.initializeData(hadis, parentStage);
-                    Platform.runLater(() -> hadisContainer.getChildren().add(element));
-                }
-            } catch(Exception ex) {
-                ex.printStackTrace();
+                Platform.runLater(()-> {
+                    try {
+                        for (int i = (current_page - 1) * data_per_page; i < current_page * data_per_page && i < hadisList.size(); i++) {
+                            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hadis-view.fxml"));
+                            VBox element = fxmlLoader.load();
+                            HadisViewController controller = fxmlLoader.getController();
+                            controller.initializeData(hadisList.get(i), parentStage);
+                            Platform.runLater(() -> hadisContainer.getChildren().add(element));
+                        }
+                    }catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                });
+            }catch (Exception exception) {
+                exception.printStackTrace();
             }
-        }, "Thread Display Hadis").start();
+        }
+
+        if(hadisList.size() > data_per_page) {
+            hbPagination.setVisible(true);
+        } else {
+            hbPagination.setVisible(false);
+        }
+        
+        if(current_page >= number_of_pages) {
+            btnNextPage.setDisable(true);
+        } else {
+            btnNextPage.setDisable(false);
+        }
+
+        if(current_page <= 1) {
+            btnPrevPage.setDisable(true);
+        } else {
+            btnPrevPage.setDisable(false);
+        }
     }
 
     public void setParentStage(Stage stage) {

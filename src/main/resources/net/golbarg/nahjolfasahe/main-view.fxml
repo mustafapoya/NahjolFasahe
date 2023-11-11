@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.StatusBar?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
@@ -92,7 +91,28 @@
          <center>
             <ScrollPane fx:id="scrollPaneHadis" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
                <content>
-                  <VBox fx:id="hadisContainer" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #93cfff;" />
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #93cfff;">
+                     <children>
+                        <VBox fx:id="hadisContainer" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="100.0" spacing="10.0" VBox.vgrow="ALWAYS" />
+                        <HBox fx:id="hbPagination" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="50.0" spacing="3.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Button fx:id="btnPrevPage" mnemonicParsing="false" prefHeight="35.0" text="قبلی">
+                                 <graphic>
+                                    <FontIcon iconLiteral="bi-arrow-right-short" iconSize="16" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="btnNextPage" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="35.0" text="بعدی">
+                                 <graphic>
+                                    <FontIcon iconLiteral="bi-arrow-left-short" iconSize="16" />
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
                </content>
                <BorderPane.margin>
                   <Insets top="2.0" />
