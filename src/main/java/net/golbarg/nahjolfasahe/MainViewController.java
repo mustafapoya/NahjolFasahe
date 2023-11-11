@@ -100,16 +100,10 @@ public class MainViewController implements Initializable {
     private int number_of_pages = 0;
 
     SearchType searchType = SearchType.CONTAIN_WORD;
-    ToggleGroup toggleGroupSearchType = new ToggleGroup();
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         hbPagination.setVisible(false);
-
-        for(MenuItem item: menuButtonSearchType.getItems()) {
-            RadioMenuItem radioMenuItem = (RadioMenuItem) item;
-            radioMenuItem.setToggleGroup(toggleGroupSearchType);
-        }
 
         menuButtonSearchType.getItems().get(0).setOnAction(event -> searchType = SearchType.CONTAIN_WORD);
         menuButtonSearchType.getItems().get(1).setOnAction(event -> searchType = SearchType.START_WITH);

@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -80,9 +81,12 @@
                <children>
                   <MenuButton fx:id="menuButtonSearchType" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="35.0" text="نوعیت جستجو">
                     <items>
-                        <RadioMenuItem mnemonicParsing="false" text="دارای حروف" />
-                        <RadioMenuItem mnemonicParsing="false" text="شروع شده توسط حروف" />
-                        <RadioMenuItem mnemonicParsing="false" text="ختم شده توسط حروف" />
+                        <RadioMenuItem mnemonicParsing="false" selected="true" text="دارای حروف">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="toggleGroupSearchType" />
+                           </toggleGroup></RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="شروع شده توسط حروف" toggleGroup="$toggleGroupSearchType" />
+                        <RadioMenuItem mnemonicParsing="false" text="ختم شده توسط حروف" toggleGroup="$toggleGroupSearchType" />
                     </items>
                      <graphic>
                         <FontIcon iconLiteral="bi-funnel-fill" iconSize="18" />
