@@ -25,6 +25,7 @@ import javafx.util.Callback;
 import net.golbarg.nahjolfasahe.controller.UtilController;
 import net.golbarg.nahjolfasahe.models.Category;
 import net.golbarg.nahjolfasahe.models.Hadis;
+import net.golbarg.nahjolfasahe.models.SearchType;
 import net.golbarg.nahjolfasahe.trans.Persian;
 import org.controlsfx.control.StatusBar;
 
@@ -62,6 +63,10 @@ public class MainViewController implements Initializable {
     // left panel
     @FXML
     private BorderPane borderPaneContent;
+
+    @FXML
+    private MenuButton menuButtonSearchType;
+
     @FXML
     private TextField txtSearchHadis;
     @FXML
@@ -93,9 +98,22 @@ public class MainViewController implements Initializable {
     private int current_page = 1;
     private int data_per_page = 30;
     private int number_of_pages = 0;
+
+    SearchType searchType = SearchType.CONTAIN_WORD;
+    ToggleGroup toggleGroupSearchType = new ToggleGroup();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         hbPagination.setVisible(false);
+
+        for(MenuItem item: menuButtonSearchType.getItems()) {
+            RadioMenuItem radioMenuItem = (RadioMenuItem) item;
+            radioMenuItem.setToggleGroup(toggleGroupSearchType);
+        }
+
+        menuButtonSearchType.getItems().get(0).setOnAction(event -> searchType = SearchType.CONTAIN_WORD);
+        menuButtonSearchType.getItems().get(1).setOnAction(event -> searchType = SearchType.START_WITH);
+        menuButtonSearchType.getItems().get(2).setOnAction(event -> searchType = SearchType.END_WITH);
 
         statusBar.setText(Persian.LOADING_CATEGORY);
         allCategories = DBController.getAllCategory();
@@ -116,8 +134,6 @@ public class MainViewController implements Initializable {
                 }
             }
         });
-
-
 
         txtSearchCategory.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -167,7 +183,7 @@ public class MainViewController implements Initializable {
                     String searchText = txtSearchHadis.getText();
                     if(searchText.length() > 0) {
                         statusBar.setText(Persian.SEARCHING_FOR + searchText);
-                        hadisList = DBController.searchHadisOf(searchText);
+                        hadisList = DBController.searchHadisOf(searchText, searchType);
                         current_page = 1;
                         displayHadis();
                         statusBar.setText(Persian.FINDED_HADISES + ": " + searchText + " (" + hadisList.size() + " " + Persian.HADIS + ")");
