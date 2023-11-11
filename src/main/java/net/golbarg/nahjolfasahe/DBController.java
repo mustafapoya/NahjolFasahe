@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import net.golbarg.nahjolfasahe.models.Category;
 import net.golbarg.nahjolfasahe.models.Hadis;
+import net.golbarg.nahjolfasahe.models.SearchType;
 
 import java.io.File;
 import java.sql.*;
@@ -95,13 +96,18 @@ public class DBController {
         return hadisList;
     }
 
-    public static ObservableList<Hadis> searchHadisOf(String searchText) {
+    public static ObservableList<Hadis> searchHadisOf(String searchText, SearchType searchType) {
         ObservableList<Hadis> hadisList = FXCollections.observableArrayList();
         String query = "SELECT * FROM " + TABLE_HADIS + " WHERE hadis_text LIKE ?;";
 
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, "%" + searchText + "%");
+            switch (searchType) {
+                case CONTAIN_WORD -> statement.setString(1, "%" + searchText + "%");
+                case START_WITH -> statement.setString(1, searchText + "%");
+                case END_WITH -> statement.setString(1, "%" + searchText);
+            }
+
             ResultSet result = statement.executeQuery();
 
             while(result.next()) {

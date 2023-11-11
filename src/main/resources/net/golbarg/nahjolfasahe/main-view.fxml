@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
@@ -76,8 +78,18 @@
          <top>
             <HBox alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" spacing="2.0" BorderPane.alignment="CENTER">
                <children>
+                  <MenuButton fx:id="menuButtonSearchType" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="35.0" text="نوعیت جستجو">
+                    <items>
+                        <RadioMenuItem mnemonicParsing="false" text="دارای حروف" />
+                        <RadioMenuItem mnemonicParsing="false" text="شروع شده توسط حروف" />
+                        <RadioMenuItem mnemonicParsing="false" text="ختم شده توسط حروف" />
+                    </items>
+                     <graphic>
+                        <FontIcon iconLiteral="bi-funnel-fill" iconSize="18" />
+                     </graphic>
+                  </MenuButton>
                   <TextField fx:id="txtSearchHadis" nodeOrientation="RIGHT_TO_LEFT" prefHeight="35.0" promptText="جستجو احادیث" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnSearchHadis" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" HBox.hgrow="NEVER">
+                  <Button fx:id="btnSearchHadis" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" text="جستجو" HBox.hgrow="NEVER">
                      <graphic>
                         <FontIcon iconLiteral="bi-search" iconSize="18" />
                      </graphic>
